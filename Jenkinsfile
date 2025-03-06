@@ -1,0 +1,79 @@
+pipeline {
+    agent any
+
+    environment {
+        DOCKER_IMAGE = "hatemnefzi/spring-boot-app:latest"
+        KUBE_CONFIG_PATH = "/var/lib/jenkins/.kube/config"
+       
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/hatem-nefzi/springboot-cicd'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'mvn clean package -DskipTests'
+            }
+        }
+
+        stage('Functional Tests') {
+            steps {
+            sh 'mvn test' // Runs Playwright tests
+            }
+            post {
+            always {
+                archiveArtifacts artifacts: 'target/surefire-reports/**/*', allowEmptyArchive: true
+                junit 'target/surefire-reports/*.xml' // Publish test results
+            }
+            }
+        }
+
+        stage('Run Gatling Tests') {
+            steps {
+                sh 'mvn gatling:test'
+            }
+            post {
+                always {
+                    // Archive Gatling reports
+                    archiveArtifacts artifacts: 'target/gatling/**/*', allowEmptyArchive: true
+                    // Publish Gatling reports (optional)
+                    gatlingArchive()
+                }
+            }
+        }
+
+        stage('Docker Build') {
+    steps {
+        sh '''
+            docker buildx create --use
+            docker buildx build -t $DOCKER_IMAGE --load .
+        '''
+    }
+}
+
+        stage('Docker Push') {
+    steps {
+        withDockerRegistry([credentialsId: 'docker-hub-credentials', url: 'https://index.docker.io/v1/']) {
+            sh 'docker push $DOCKER_IMAGE'
+        }
+    }
+}
+
+
+        stage('Deploy') {
+            steps {
+                script {
+                    sh '''
+                    kubectl set image deployment/spring-boot-app spring-boot-app=hatemnefzi/spring-boot-app:latest --record
+                    kubectl rollout status deployment/spring-boot-app
+                    kubectl get pods
+                    '''
+                }
+            }
+        }
+    }
+}
