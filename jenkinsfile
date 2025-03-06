@@ -20,6 +20,18 @@ pipeline {
             }
         }
 
+        stage('Functional Tests') {
+            steps {
+            sh 'mvn test' // Runs Playwright tests
+            }
+            post {
+            always {
+                archiveArtifacts artifacts: 'target/surefire-reports/**/*', allowEmptyArchive: true
+                junit 'target/surefire-reports/*.xml' // Publish test results
+            }
+            }
+        }
+
         stage('Run Gatling Tests') {
             steps {
                 sh 'mvn gatling:test'
