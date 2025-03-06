@@ -1,0 +1,458 @@
+2025.03.06 11:24:19 INFO  Started: Metals version 1.5.1 in folders '/home/hatemnefzi/springboot-cicd' for client Visual Studio Code 1.97.2.
+Mar 06, 2025 11:24:20 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleNotification
+WARNING: Notification threw an exception: {
+  "jsonrpc": "2.0",
+  "method": "textDocument/didOpen",
+  "params": {
+    "textDocument": {
+      "uri": "file:///home/hatemnefzi/springboot-cicd/src/test/scala/HelloControllerSimulation.scala",
+      "languageId": "java",
+      "version": 1,
+      "text": "package com.example.demo\n\nimport io.gatling.core.Predef._\nimport io.gatling.http.Predef._\nimport scala.concurrent.duration._\n\nclass HelloControllerSimulation extends Simulation {\n\n  val httpProtocol \u003d http\n    .baseUrl(\"http://localhost:8081\") // Update with your app\u0027s URL\n    .acceptHeader(\"application/json\")\n\n  val scn \u003d scenario(\"HelloControllerSimulation\")\n    .exec(\n      http(\"Get Hello\")\n        .get(\"/hello\")\n        .check(status.is(200))\n    )\n    .pause(1.second)\n    .exec(\n      http(\"Get Time\")\n        .get(\"/time\")\n        .check(status.is(200))\n    )\n    .pause(1.second)\n    .exec(\n      http(\"Greet User\")\n        .get(\"/greet?name\u003dGatling\")\n        .check(status.is(200))\n    )\n\n  setUp(\n    scn.inject(\n      atOnceUsers(10) // Simulate 10 users at once\n    )\n  ).protocols(httpProtocol)\n}"
+    }
+  }
+}
+java.lang.IllegalStateException: An unexpected exception occurred while executing jsonrpc method public abstract java.util.concurrent.CompletableFuture scala.meta.metals.lsp.TextDocumentService.didOpen(org.eclipse.lsp4j.DidOpenTextDocumentParams)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$recursiveFindRpcMethods$0(GenericEndpoint.java:73)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.notify(GenericEndpoint.java:160)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleNotification(RemoteEndpoint.java:231)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:198)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:185)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:97)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:114)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.nio.file.NoSuchFileException: /home/hatemnefzi/springboot-cicd/src/test/scala/HelloControllerSimulation.scala
+	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:92)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:106)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:111)
+	at java.base/sun.nio.fs.UnixFileSystemProvider.newByteChannel(UnixFileSystemProvider.java:218)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:380)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:432)
+	at java.base/java.nio.file.Files.readAllBytes(Files.java:3288)
+	at scala.meta.internal.io.PlatformFileIO$.slurp(PlatformFileIO.scala:42)
+	at scala.meta.internal.io.FileIO$.slurp(FileIO.scala:18)
+	at scala.meta.internal.metals.MetalsLspService.didOpen(MetalsLspService.scala:741)
+	at scala.meta.internal.metals.WorkspaceLspService.didOpen(WorkspaceLspService.scala:403)
+	at scala.meta.metals.lsp.DelegatingScalaService.didOpen(DelegatingScalaService.scala:38)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$recursiveFindRpcMethods$0(GenericEndpoint.java:65)
+	... 11 more
+
+Mar 06, 2025 11:24:20 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleNotification
+WARNING: Notification threw an exception: {
+  "jsonrpc": "2.0",
+  "method": "textDocument/didOpen",
+  "params": {
+    "textDocument": {
+      "uri": "file:///home/hatemnefzi/springboot-cicd/src/test/scala/com/HelloControllerSimulation.scala",
+      "languageId": "java",
+      "version": 1,
+      "text": "package com.example.demo\n\nimport io.gatling.core.Predef._\nimport io.gatling.http.Predef._\nimport scala.concurrent.duration._\n\nclass HelloControllerSimulation extends Simulation {\n\n  val httpProtocol \u003d http\n    .baseUrl(\"http://localhost:8081\") // Update with your app\u0027s URL\n    .acceptHeader(\"application/json\")\n\n  val scn \u003d scenario(\"HelloControllerSimulation\")\n    .exec(\n      http(\"Get Hello\")\n        .get(\"/hello\")\n        .check(status.is(200))\n    )\n    .pause(1.second)\n    .exec(\n      http(\"Get Time\")\n        .get(\"/time\")\n        .check(status.is(200))\n    )\n    .pause(1.second)\n    .exec(\n      http(\"Greet User\")\n        .get(\"/greet?name\u003dGatling\")\n        .check(status.is(200))\n    )\n\n  setUp(\n    scn.inject(\n      atOnceUsers(10) // Simulate 10 users at once\n    )\n  ).protocols(httpProtocol)\n}"
+    }
+  }
+}
+java.lang.IllegalStateException: An unexpected exception occurred while executing jsonrpc method public abstract java.util.concurrent.CompletableFuture scala.meta.metals.lsp.TextDocumentService.didOpen(org.eclipse.lsp4j.DidOpenTextDocumentParams)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$recursiveFindRpcMethods$0(GenericEndpoint.java:73)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.notify(GenericEndpoint.java:160)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleNotification(RemoteEndpoint.java:231)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:198)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:185)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:97)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:114)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.nio.file.NoSuchFileException: /home/hatemnefzi/springboot-cicd/src/test/scala/com/HelloControllerSimulation.scala
+	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:92)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:106)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:111)
+	at java.base/sun.nio.fs.UnixFileSystemProvider.newByteChannel(UnixFileSystemProvider.java:218)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:380)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:432)
+	at java.base/java.nio.file.Files.readAllBytes(Files.java:3288)
+	at scala.meta.internal.io.PlatformFileIO$.slurp(PlatformFileIO.scala:42)
+	at scala.meta.internal.io.FileIO$.slurp(FileIO.scala:18)
+	at scala.meta.internal.metals.MetalsLspService.didOpen(MetalsLspService.scala:741)
+	at scala.meta.internal.metals.WorkspaceLspService.didOpen(WorkspaceLspService.scala:403)
+	at scala.meta.metals.lsp.DelegatingScalaService.didOpen(DelegatingScalaService.scala:38)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$recursiveFindRpcMethods$0(GenericEndpoint.java:65)
+	... 11 more
+
+Mar 06, 2025 11:24:20 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleNotification
+WARNING: Notification threw an exception: {
+  "jsonrpc": "2.0",
+  "method": "textDocument/didOpen",
+  "params": {
+    "textDocument": {
+      "uri": "file:///home/hatemnefzi/springboot-cicd/src/test/scala/com/example/HelloControllerSimulation.scala",
+      "languageId": "java",
+      "version": 1,
+      "text": "package com.example.demo\n\nimport io.gatling.core.Predef._\nimport io.gatling.http.Predef._\nimport scala.concurrent.duration._\n\nclass HelloControllerSimulation extends Simulation {\n\n  val httpProtocol \u003d http\n    .baseUrl(\"http://localhost:8081\") // Update with your app\u0027s URL\n    .acceptHeader(\"application/json\")\n\n  val scn \u003d scenario(\"HelloControllerSimulation\")\n    .exec(\n      http(\"Get Hello\")\n        .get(\"/hello\")\n        .check(status.is(200))\n    )\n    .pause(1.second)\n    .exec(\n      http(\"Get Time\")\n        .get(\"/time\")\n        .check(status.is(200))\n    )\n    .pause(1.second)\n    .exec(\n      http(\"Greet User\")\n        .get(\"/greet?name\u003dGatling\")\n        .check(status.is(200))\n    )\n\n  setUp(\n    scn.inject(\n      atOnceUsers(10) // Simulate 10 users at once\n    )\n  ).protocols(httpProtocol)\n}"
+    }
+  }
+}
+java.lang.IllegalStateException: An unexpected exception occurred while executing jsonrpc method public abstract java.util.concurrent.CompletableFuture scala.meta.metals.lsp.TextDocumentService.didOpen(org.eclipse.lsp4j.DidOpenTextDocumentParams)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$recursiveFindRpcMethods$0(GenericEndpoint.java:73)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.notify(GenericEndpoint.java:160)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleNotification(RemoteEndpoint.java:231)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:198)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:185)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:97)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:114)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.nio.file.NoSuchFileException: /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/HelloControllerSimulation.scala
+	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:92)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:106)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:111)
+	at java.base/sun.nio.fs.UnixFileSystemProvider.newByteChannel(UnixFileSystemProvider.java:218)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:380)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:432)
+	at java.base/java.nio.file.Files.readAllBytes(Files.java:3288)
+	at scala.meta.internal.io.PlatformFileIO$.slurp(PlatformFileIO.scala:42)
+	at scala.meta.internal.io.FileIO$.slurp(FileIO.scala:18)
+	at scala.meta.internal.metals.MetalsLspService.didOpen(MetalsLspService.scala:741)
+	at scala.meta.internal.metals.WorkspaceLspService.didOpen(WorkspaceLspService.scala:403)
+	at scala.meta.metals.lsp.DelegatingScalaService.didOpen(DelegatingScalaService.scala:38)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$recursiveFindRpcMethods$0(GenericEndpoint.java:65)
+	... 11 more
+
+Mar 06, 2025 11:24:50 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+2025.03.06 11:25:03 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/demo/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 11:26:01 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/demo/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 11:26:01 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/demo/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 11:26:01 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/demo/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 11:26:01 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:26:08 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:26:21 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:26:24 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:27:34 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:27:47 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:27:54 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:28:22 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+2025.03.06 11:28:24 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/demo/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 11:28:24 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/demo/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 11:28:26 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/demo/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 11:28:32 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:28:33 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+2025.03.06 11:28:33 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/demo/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 11:28:33 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 11:28:33 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 11:28:35 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 11:28:57 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:29:27 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:29:36 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:29:37 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:30:14 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:30:16 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:30:17 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:30:46 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:30:49 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:30:50 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+2025.03.06 11:30:50 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 11:30:50 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/demo/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 11:30:50 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/demo/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 11:30:50 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/demo/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 11:31:47 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:32:15 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+2025.03.06 11:32:16 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/demo/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 11:32:16 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/demo/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 11:32:17 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/demo/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 11:32:18 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/demo/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 11:32:18 AM scala.meta.internal.metals.StdReporter $anonfun$create$1
+SEVERE: empty definition using pc, found symbol in pc: `<none>`. (full report at: /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_empty-definition_11-32-18-564.md)
+Mar 06, 2025 11:32:23 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:32:24 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+2025.03.06 11:32:24 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/demo/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 11:32:52 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/simulations/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 11:32:52 WARN  Could not find semantic tokens for: file:///home/hatemnefzi/springboot-cicd/src/test/scala/simulations/HelloControllerSimulation.scala
+2025.03.06 11:32:53 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/simulations/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 11:32:53 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/simulations/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 11:32:53 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/simulations/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 11:32:53 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/simulations/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 11:32:53 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/simulations/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 11:32:54 WARN  no build target for: /home/hatemnefzi/springboot-cicd/src/test/scala/simulations/HelloControllerSimulation.scala
+2025.03.06 11:32:54 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/simulations/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 11:33:19 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:33:55 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:35:50 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:35:51 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:36:00 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:36:51 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:36:52 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:37:01 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:37:29 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:37:29 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:39:28 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:40:09 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:45:03 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:45:27 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:49:07 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:50:34 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:50:42 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:50:54 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:50:57 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:51:44 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:52:00 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:52:01 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:53:11 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:53:18 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:53:24 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:53:43 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:53:49 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:54:28 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:54:43 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:54:44 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:55:39 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:55:54 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:56:29 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:56:31 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:56:37 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:56:41 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:56:49 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:57:20 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:58:06 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:58:12 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:58:36 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 11:58:46 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:00:03 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:00:14 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:00:23 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:00:52 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:01:01 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:01:11 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:03:14 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:03:15 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:04:30 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:04:46 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:04:52 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:05:09 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:05:16 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:05:19 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+2025.03.06 12:05:44 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 12:05:44 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 12:05:44 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 12:05:46 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 12:05:46 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_12-05-46-265.md
+2025.03.06 12:05:48 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 12:05:57 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:07:02 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:08:26 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:08:27 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+2025.03.06 12:08:31 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 12:08:31 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 12:08:31 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 12:08:31 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_12-08-31-557.md
+2025.03.06 12:08:32 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 12:08:32 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 12:08:32 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_12-08-32-449.md
+Mar 06, 2025 12:08:45 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:09:06 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:09:27 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:09:28 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+2025.03.06 12:09:28 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/simulations/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 12:09:30 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/simulations/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 12:09:30 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/simulations/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 12:09:32 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/simulations/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 12:10:48 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:11:37 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:16:58 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:17:02 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:20:52 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:20:54 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:20:57 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:22:04 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:49:15 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:49:18 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:49:22 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:49:36 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+2025.03.06 12:49:38 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 12:49:38 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 12:49:38 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 12:49:39 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 12:49:39 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_12-49-39-211.md
+Mar 06, 2025 12:49:39 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_12-49-39-212.md
+Mar 06, 2025 12:49:40 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:49:47 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+2025.03.06 12:49:49 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 12:49:49 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_12-49-49-381.md
+2025.03.06 12:49:49 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 12:49:49 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_12-49-49-910.md
+2025.03.06 12:49:53 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 12:49:53 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_12-49-53-348.md
+2025.03.06 12:49:54 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 12:49:54 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_12-49-54-903.md
+2025.03.06 12:49:59 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 12:49:59 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_12-49-59-886.md
+2025.03.06 12:50:01 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 12:50:01 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_12-50-01-356.md
+2025.03.06 12:50:01 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 12:50:01 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_12-50-01-892.md
+2025.03.06 12:50:07 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 12:50:07 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_12-50-07-769.md
+2025.03.06 12:50:07 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 12:50:08 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_12-50-08-729.md
+2025.03.06 12:50:09 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 12:50:09 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_12-50-09-280.md
+2025.03.06 12:50:09 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 12:50:09 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_12-50-09-605.md
+2025.03.06 12:50:12 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 12:50:12 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_12-50-12-905.md
+Mar 06, 2025 12:50:28 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:59:01 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:59:01 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:59:03 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 12:59:57 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 1:00:02 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 1:00:23 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+Mar 06, 2025 1:00:43 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 1:00:45 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
