@@ -78,16 +78,14 @@ spec:
 
         stage('Functional Tests') {
             steps {
-                container('maven') {
+                container('playwright') {
                     // Install Node.js and npm (required for Playwright)
                     sh '''
-                        apt-get update
-                        apt-get install -y nodejs npm
                         npm install playwright
-                        npx playwright install
+                        npx playwright install --with-deps
                         echo "Playwright installation complete"
+                        mvn test
                     '''
-                    sh 'mvn test' // Runs Playwright tests
                 }
             }
             post {
