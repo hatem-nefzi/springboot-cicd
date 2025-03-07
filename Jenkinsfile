@@ -80,9 +80,13 @@ spec:
         stage('Functional Tests') {
             steps {
                 container('maven') {
-                    // Install Playwright browsers before running the tests
-                    sh 'npm install playwright'
-                    sh 'npx playwright install' // Install required browsers
+                    // Install Node.js and npm (required for Playwright)
+                    sh '''
+                        apt-get update
+                        apt-get install -y nodejs npm
+                        npm install playwright
+                        npx playwright install
+                    '''
                     sh 'mvn test' // Runs Playwright tests
                 }
             }
