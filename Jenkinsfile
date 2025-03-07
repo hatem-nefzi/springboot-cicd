@@ -2,7 +2,7 @@ pipeline {
     agent {
         kubernetes {
             label 'jenkins-agent'
-            yaml"""
+            yaml """
 apiVersion: v1
 kind: Pod
 metadata:
@@ -52,19 +52,6 @@ spec:
       requests:
         cpu: "500m"
         memory: "512Mi"
-  - name: playwright
-    image: mcr.microsoft.com/playwright:v1.22.0-focal
-    command:
-    - cat
-    tty: true
-    workingDir: /home/jenkins/agent
-    resources:
-      limits:
-        cpu: "1"
-        memory: "1Gi"
-      requests:
-        cpu: "500m"
-        memory: "512Mi"
 """
         }
     }
@@ -91,14 +78,16 @@ spec:
 
         stage('Functional Tests') {
             steps {
-                container('playwright') {
+                container('maven') {
                     // Install Node.js and npm (required for Playwright)
                     sh '''
+                        apt-get update
+                        apt-get install -y nodejs npm
                         npm install playwright
-                        npx playwright install --with-deps
+                        npx playwright install
                         echo "Playwright installation complete"
-                        mvn test
                     '''
+                    sh 'mvn test' // Runs Playwright tests
                 }
             }
             post {
