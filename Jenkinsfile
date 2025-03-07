@@ -15,6 +15,10 @@ spec:
     image: jenkins/inbound-agent:latest
     args: ['\$(JENKINS_SECRET)', '\$(JENKINS_NAME)']
     workingDir: /home/jenkins/agent
+    tty: true
+    ports:
+    - containerPort: 50000
+      protocol: TCP
     resources:
       limits:
         cpu: "1"
