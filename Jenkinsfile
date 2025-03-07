@@ -1,7 +1,7 @@
 pipeline {
     agent {
         kubernetes {
-            label 'jenkins-agent' // Match the label from the pod template
+            label 'jenkins-agent'
             yaml """
 apiVersion: v1
 kind: Pod
@@ -71,8 +71,7 @@ spec:
         stage('Build') {
             steps {
                 container('maven') {
-                    
-                    sh 'mvn clean package -DskipTests'
+                    sh 'mvn clean package' // Remove -DskipTests
                 }
             }
         }
@@ -86,14 +85,23 @@ spec:
                         apt-get install -y nodejs npm
                         npm install playwright
                         npx playwright install
+                        echo "Playwright installation complete"
                     '''
                     sh 'mvn test' // Runs Playwright tests
                 }
             }
             post {
                 always {
+                    script {
+                        // Check if test reports exist
+                        def testReports = findFiles(glob: 'target/surefire-reports/*.xml')
+                        if (testReports) {
+                            junit 'target/surefire-reports/*.xml'
+                        } else {
+                            echo 'No test report files found. Skipping JUnit step.'
+                        }
+                    }
                     archiveArtifacts artifacts: 'target/surefire-reports/**/*', allowEmptyArchive: true
-                    junit 'target/surefire-reports/*.xml' // Publish test results
                 }
             }
         }
