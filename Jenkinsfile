@@ -1,10 +1,60 @@
 pipeline {
-    agent any
+    agent {
+        kubernetes {
+            label 'jenkins-agent' // Match the label from the pod template
+            yaml """
+apiVersion: v1
+kind: Pod
+metadata:
+  name: jenkins-agent
+  labels:
+    jenkins-agent: true
+spec:
+  containers:
+  - name: jnlp
+    image: jenkins/inbound-agent:latest
+    args: ['\$(JENKINS_SECRET)', '\$(JENKINS_NAME)']
+    workingDir: /home/jenkins/agent
+    resources:
+      limits:
+        cpu: "1"
+        memory: "1Gi"
+      requests:
+        cpu: "500m"
+        memory: "512Mi"
+  - name: maven
+    image: maven:3.8-openjdk-17
+    command:
+    - cat
+    tty: true
+    workingDir: /home/jenkins/agent
+    resources:
+      limits:
+        cpu: "1"
+        memory: "1Gi"
+      requests:
+        cpu: "500m"
+        memory: "512Mi"
+  - name: gatling
+    image: denvazh/gatling:latest
+    command:
+    - cat
+    tty: true
+    workingDir: /home/jenkins/agent
+    resources:
+      limits:
+        cpu: "1"
+        memory: "1Gi"
+      requests:
+        cpu: "500m"
+        memory: "512Mi"
+"""
+        }
+    }
 
     environment {
         DOCKER_IMAGE = "hatemnefzi/spring-boot-app:latest"
         KUBE_CONFIG_PATH = "/var/lib/jenkins/.kube/config"
-       
     }
 
     stages {
@@ -16,25 +66,31 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn clean package -DskipTests'
+                container('maven') {
+                    sh 'mvn clean package -DskipTests'
+                }
             }
         }
 
         stage('Functional Tests') {
             steps {
-            sh 'mvn test' // Runs Playwright tests
+                container('maven') {
+                    sh 'mvn test' // Runs Playwright tests
+                }
             }
             post {
-            always {
-                archiveArtifacts artifacts: 'target/surefire-reports/**/*', allowEmptyArchive: true
-                junit 'target/surefire-reports/*.xml' // Publish test results
-            }
+                always {
+                    archiveArtifacts artifacts: 'target/surefire-reports/**/*', allowEmptyArchive: true
+                    junit 'target/surefire-reports/*.xml' // Publish test results
+                }
             }
         }
 
         stage('Run Gatling Tests') {
             steps {
-                sh 'mvn gatling:test'
+                container('gatling') {
+                    sh 'mvn gatling:test'
+                }
             }
             post {
                 always {
@@ -47,33 +103,47 @@ pipeline {
         }
 
         stage('Docker Build') {
-    steps {
-        sh '''
-            docker buildx create --use
-            docker buildx build -t $DOCKER_IMAGE --load .
-        '''
-    }
-}
+            steps {
+                container('maven') {
+                    sh '''
+                        docker buildx create --use
+                        docker buildx build -t $DOCKER_IMAGE --load .
+                    '''
+                }
+            }
+        }
 
         stage('Docker Push') {
-    steps {
-        withDockerRegistry([credentialsId: 'docker-hub-credentials', url: 'https://index.docker.io/v1/']) {
-            sh 'docker push $DOCKER_IMAGE'
+            steps {
+                withDockerRegistry([credentialsId: 'docker-hub-credentials', url: 'https://index.docker.io/v1/']) {
+                    container('maven') {
+                        sh 'docker push $DOCKER_IMAGE'
+                    }
+                }
+            }
         }
-    }
-}
-
 
         stage('Deploy') {
             steps {
                 script {
-                    sh '''
-                    kubectl set image deployment/spring-boot-app spring-boot-app=hatemnefzi/spring-boot-app:latest --record
-                    kubectl rollout status deployment/spring-boot-app
-                    kubectl get pods
-                    '''
+                    container('maven') {
+                        sh '''
+                            kubectl set image deployment/spring-boot-app spring-boot-app=hatemnefzi/spring-boot-app:latest --record
+                            kubectl rollout status deployment/spring-boot-app
+                            kubectl get pods
+                        '''
+                    }
                 }
             }
+        }
+    }
+
+    post {
+        success {
+            slackSend channel: '#dev-team', message: 'Pipeline succeeded!'
+        }
+        failure {
+            slackSend channel: '#dev-team', message: 'Pipeline failed!'
         }
     }
 }

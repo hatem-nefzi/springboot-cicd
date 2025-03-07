@@ -456,3 +456,963 @@ Mar 06, 2025 1:00:43 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notif
 WARNING: Unsupported notification method: metals/windowStateDidChange
 Mar 06, 2025 1:00:45 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
 WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 1:00:47 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 1:00:49 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 1:00:57 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 1:01:42 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 3:45:41 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 3:45:46 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 3:46:20 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 3:47:28 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 3:49:08 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 3:49:09 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+2025.03.06 15:49:10 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/simulations/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:49:10 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/simulations/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:49:10 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/simulations/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:49:21 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/simulations/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:49:21 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/simulations/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:49:21 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/simulations/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:49:23 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/simulations/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:49:23 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/simulations/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:49:24 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/simulations/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:49:24 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/simulations/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:49:24 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/simulations/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:49:24 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/simulations/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:49:25 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/simulations/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:49:26 WARN  no build target for: /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/simulations/HelloControllerSimulation.scala
+2025.03.06 15:49:26 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/simulations/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:49:26 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/simulations/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:49:29 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/simulations/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:49:49 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/simulations/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 3:49:55 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 3:50:20 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 3:50:52 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 3:50:54 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+2025.03.06 15:50:55 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:50:55 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:50:55 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 3:50:55 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_15-50-55-527.md
+2025.03.06 15:50:56 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:50:57 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 3:50:58 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 3:52:04 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 3:54:57 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 3:54:58 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 3:55:11 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 3:55:17 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 3:56:16 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 3:56:29 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 3:56:43 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 3:56:49 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+2025.03.06 15:57:01 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 3:57:01 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_15-57-01-687.md
+2025.03.06 15:57:01 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:57:01 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:57:02 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 3:57:02 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_15-57-02-156.md
+2025.03.06 15:57:02 WARN  no build target for: /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java
+2025.03.06 15:57:02 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 3:57:02 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_15-57-02-825.md
+Mar 06, 2025 3:57:04 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 3:57:18 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+2025.03.06 15:57:19 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:57:19 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:57:19 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:57:20 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 3:57:20 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_15-57-20-422.md
+2025.03.06 15:57:19 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:57:21 WARN  no build target for: /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java
+2025.03.06 15:57:21 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 3:57:21 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_15-57-21-150.md
+2025.03.06 15:57:22 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 3:57:23 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_15-57-23-012.md
+2025.03.06 15:57:22 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:57:24 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:57:24 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:57:24 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 3:57:24 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_15-57-24-986.md
+2025.03.06 15:57:24 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:57:24 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:57:25 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:57:25 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 3:57:25 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_15-57-25-876.md
+2025.03.06 15:57:25 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:57:25 WARN  no build target for: /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java
+2025.03.06 15:57:26 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:57:25 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 3:57:26 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_15-57-26-594.md
+2025.03.06 15:57:27 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 3:57:27 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_15-57-27-694.md
+2025.03.06 15:57:27 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 3:57:28 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_15-57-28-209.md
+2025.03.06 15:57:28 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 3:57:28 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_15-57-28-900.md
+2025.03.06 15:57:30 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:57:30 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 3:57:30 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_15-57-30-516.md
+2025.03.06 15:57:31 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:57:32 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:57:32 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:57:32 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 3:57:32 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_15-57-32-977.md
+2025.03.06 15:57:32 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:57:33 WARN  no build target for: /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java
+2025.03.06 15:57:33 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:57:33 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 3:57:33 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_15-57-33-753.md
+2025.03.06 15:57:33 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:57:33 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:57:33 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 3:57:34 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_15-57-34-403.md
+2025.03.06 15:57:34 WARN  no build target for: /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java
+2025.03.06 15:57:34 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 3:57:34 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_15-57-34-780.md
+2025.03.06 15:57:34 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 3:57:35 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_15-57-35-063.md
+2025.03.06 15:57:38 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 3:57:38 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_15-57-38-253.md
+2025.03.06 15:57:38 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 3:57:38 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_15-57-38-483.md
+2025.03.06 15:57:38 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:57:44 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:57:46 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:57:48 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 3:57:48 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_15-57-48-525.md
+2025.03.06 15:57:48 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 3:57:48 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_15-57-48-720.md
+2025.03.06 15:57:49 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:57:49 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 3:57:49 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_15-57-49-993.md
+2025.03.06 15:57:49 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:57:51 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:58:26 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:58:26 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:58:26 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 3:58:26 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_15-58-26-610.md
+2025.03.06 15:58:26 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:58:27 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 3:58:27 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_15-58-27-373.md
+Mar 06, 2025 3:58:27 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 291
+2025.03.06 15:58:29 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 3:58:30 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_15-58-30-039.md
+2025.03.06 15:58:31 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 3:58:31 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_15-58-31-398.md
+2025.03.06 15:58:31 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:58:49 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/simulations/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:58:52 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:58:52 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:58:52 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 3:58:52 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_15-58-52-510.md
+2025.03.06 15:58:52 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 15:58:52 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 3:58:53 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_15-58-53-184.md
+2025.03.06 15:58:56 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 3:58:56 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_15-58-56-486.md
+Mar 06, 2025 3:58:59 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 3:59:32 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 3:59:39 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 3:59:47 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:00:02 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:00:06 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:00:12 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:00:13 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+2025.03.06 16:00:13 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:00:13 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:00:14 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:00:14 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-00-14-130.md
+2025.03.06 16:00:13 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:00:14 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/main/java/com/example/demo/HelloController.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:00:15 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:01:23 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:02:06 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:02:08 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+2025.03.06 16:02:09 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:02:09 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:02:09 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:02:09 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-02-09-415.md
+2025.03.06 16:02:09 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:02:10 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:02:12 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:02:52 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+2025.03.06 16:02:53 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:02:53 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:02:53 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:02:54 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:02:54 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-02-54-975.md
+2025.03.06 16:02:55 WARN  no build target for: /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java
+2025.03.06 16:02:55 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:02:55 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:02:55 WARN  Running javac-semanticdb failed for file:///home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Output:
+
+Mar 06, 2025 4:02:55 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-02-55-745.md
+2025.03.06 16:02:55 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:02:55 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:02:56 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-02-56-078.md
+2025.03.06 16:02:55 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:02:56 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-02-56-334.md
+2025.03.06 16:02:57 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:02:57 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-02-57-846.md
+2025.03.06 16:02:57 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:03:02 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:03:02 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-03-02-404.md
+2025.03.06 16:03:02 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:03:09 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:03:09 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-03-09-263.md
+2025.03.06 16:03:09 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:03:10 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:03:10 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:03:14 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:03:14 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:03:14 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:03:14 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:03:14 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:03:14 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-03-14-895.md
+2025.03.06 16:03:14 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:03:14 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:03:14 WARN  no build target for: /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java
+2025.03.06 16:03:15 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:03:15 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-03-15-743.md
+2025.03.06 16:03:16 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:03:16 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:03:17 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-03-17-183.md
+2025.03.06 16:03:16 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:03:20 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:03:20 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-03-20-206.md
+2025.03.06 16:03:20 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:03:23 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:03:27 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:03:27 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:03:27 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:03:27 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-03-27-910.md
+2025.03.06 16:03:27 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:03:28 WARN  no build target for: /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java
+2025.03.06 16:03:28 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:03:28 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-03-28-666.md
+2025.03.06 16:03:29 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:03:32 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:03:32 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-03-32-759.md
+2025.03.06 16:03:35 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:03:35 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-03-35-723.md
+2025.03.06 16:03:35 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:03:37 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:03:37 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-03-37-910.md
+2025.03.06 16:03:37 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:03:37 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:03:39 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:03:39 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-03-39-059.md
+2025.03.06 16:03:39 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:03:39 WARN  no build target for: /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java
+2025.03.06 16:03:39 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:03:39 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-03-39-800.md
+2025.03.06 16:03:41 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:03:46 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:03:47 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-03-47-004.md
+2025.03.06 16:03:46 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:03:48 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:03:48 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-03-48-064.md
+2025.03.06 16:03:48 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:03:48 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:03:48 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-03-48-692.md
+2025.03.06 16:03:49 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:03:49 WARN  no build target for: /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java
+2025.03.06 16:03:49 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:03:49 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-03-49-420.md
+2025.03.06 16:03:50 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:03:50 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:03:50 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:03:50 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-03-50-486.md
+2025.03.06 16:03:50 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:03:51 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:03:57 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:04:01 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:04:01 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:04:02 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:04:02 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-04-02-160.md
+2025.03.06 16:04:01 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:04:02 WARN  no build target for: /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java
+2025.03.06 16:04:02 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:04:02 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-04-02-856.md
+2025.03.06 16:04:03 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:04:05 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:04:08 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:04:09 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-04-09-021.md
+Mar 06, 2025 4:04:13 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:04:22 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+2025.03.06 16:04:22 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:04:22 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:04:22 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:04:23 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:04:23 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:04:23 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-04-23-891.md
+2025.03.06 16:04:23 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:04:24 WARN  no build target for: /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java
+2025.03.06 16:04:24 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:04:24 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-04-24-627.md
+2025.03.06 16:04:23 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:04:24 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-04-24-795.md
+2025.03.06 16:04:25 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:04:25 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-04-25-284.md
+2025.03.06 16:04:25 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:04:25 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:04:30 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:04:32 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:04:32 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:04:32 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:04:33 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:04:32 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:04:33 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-04-33-199.md
+2025.03.06 16:04:32 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:04:33 WARN  no build target for: /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java
+2025.03.06 16:04:33 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:04:34 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-04-34-022.md
+2025.03.06 16:04:34 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:04:36 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:04:36 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-04-36-799.md
+2025.03.06 16:04:36 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:04:40 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:04:42 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:04:42 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:04:42 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:04:43 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 583
+2025.03.06 16:04:42 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:04:42 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:04:43 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:04:43 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-04-43-311.md
+2025.03.06 16:04:44 WARN  no build target for: /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java
+2025.03.06 16:04:44 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:04:44 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-04-44-221.md
+2025.03.06 16:04:53 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:04:53 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-04-53-168.md
+2025.03.06 16:04:53 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:04:59 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:04:59 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-04-59-482.md
+2025.03.06 16:04:59 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:05:11 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:05:42 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+2025.03.06 16:05:58 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:05:58 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:05:58 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-05-58-991.md
+2025.03.06 16:06:02 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:06:02 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-06-02-706.md
+2025.03.06 16:06:03 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:06:03 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-06-03-852.md
+2025.03.06 16:06:03 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:06:03 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:06:03 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:06:04 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-06-04-587.md
+2025.03.06 16:06:03 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:06:04 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:06:04 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-06-04-850.md
+2025.03.06 16:06:04 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:06:04 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:06:04 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:06:05 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:06:05 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-06-05-515.md
+2025.03.06 16:06:04 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:06:06 WARN  no build target for: /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java
+2025.03.06 16:06:06 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:06:06 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-06-06-186.md
+2025.03.06 16:06:06 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:06:06 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:06:06 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:06:06 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-06-06-776.md
+2025.03.06 16:06:06 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:06:07 WARN  no build target for: /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java
+2025.03.06 16:06:07 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:06:07 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-06-07-485.md
+2025.03.06 16:06:07 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:06:07 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:06:07 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:06:08 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-06-08-034.md
+2025.03.06 16:06:07 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:06:08 WARN  no build target for: /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java
+2025.03.06 16:06:08 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:06:08 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-06-08-706.md
+Mar 06, 2025 4:06:17 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:06:27 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+2025.03.06 16:06:29 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:06:30 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:06:30 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:06:31 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:06:31 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-06-31-183.md
+2025.03.06 16:06:31 WARN  no build target for: /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java
+2025.03.06 16:06:31 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:06:31 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:06:31 WARN  Running javac-semanticdb failed for file:///home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/HomePageTest.java. Output:
+
+Mar 06, 2025 4:06:31 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-06-31-916.md
+2025.03.06 16:06:31 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:06:31 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:06:32 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-06-32-077.md
+2025.03.06 16:06:33 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:06:33 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-06-33-154.md
+2025.03.06 16:06:35 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:06:35 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-06-35-719.md
+2025.03.06 16:06:35 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:06:38 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:06:40 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:06:40 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:06:40 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:06:40 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:06:40 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:06:40 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-06-40-559.md
+2025.03.06 16:06:40 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:06:41 WARN  no build target for: /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java
+2025.03.06 16:06:40 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:06:41 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-06-41-360.md
+2025.03.06 16:06:46 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:06:46 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:06:46 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:06:46 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-06-46-414.md
+2025.03.06 16:06:46 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:06:47 WARN  no build target for: /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java
+2025.03.06 16:06:46 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:06:47 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-06-47-131.md
+Mar 06, 2025 4:06:54 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:06:58 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+2025.03.06 16:07:08 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:07:08 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:07:09 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:07:09 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-07-09-329.md
+2025.03.06 16:07:08 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:07:27 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:07:34 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:08:03 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:08:54 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:08:54 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:09:01 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:10:15 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:16:59 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+2025.03.06 16:18:08 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:18:09 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:18:08 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:18:09 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-18-09-106.md
+Mar 06, 2025 4:18:09 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-18-09-151.md
+Mar 06, 2025 4:18:33 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:18:45 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+2025.03.06 16:19:01 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:19:01 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-19-01-526.md
+Mar 06, 2025 4:19:15 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:19:31 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:19:48 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:19:53 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+2025.03.06 16:20:13 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/simulations/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:20:13 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/simulations/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:20:17 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:20:17 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:20:17 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-20-17-947.md
+Mar 06, 2025 4:21:08 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:21:41 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:21:44 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:22:03 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:22:15 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:22:17 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:22:43 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:23:01 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:23:11 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:23:20 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:23:27 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+2025.03.06 16:23:46 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:23:46 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-23-46-963.md
+2025.03.06 16:23:49 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:23:49 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-23-49-368.md
+2025.03.06 16:23:49 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:23:49 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-23-49-641.md
+2025.03.06 16:23:50 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:23:50 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-23-50-627.md
+Mar 06, 2025 4:23:51 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+2025.03.06 16:23:52 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:23:52 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:23:52 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:23:53 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:23:53 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:23:55 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:23:55 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:23:55 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:23:55 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-23-55-613.md
+2025.03.06 16:23:55 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:23:56 WARN  no build target for: /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java
+2025.03.06 16:23:56 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:23:56 PM scala.meta.internal.metals.StdReporter $anonfun$create$1
+SEVERE: QDox parse error in file:///home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java (full report at: /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_qdox-error_16-23-56-285.md)
+2025.03.06 16:23:56 WARN  Running javac-semanticdb failed for file:///home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Output:
+
+Mar 06, 2025 4:23:56 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-23-56-349.md
+2025.03.06 16:23:57 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:23:59 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:23:59 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:23:59 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:23:59 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-23-59-930.md
+2025.03.06 16:23:59 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:24:00 WARN  no build target for: /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java
+2025.03.06 16:24:00 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:24:00 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-24-00-643.md
+2025.03.06 16:24:01 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:24:02 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:24:02 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:24:03 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:24:03 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-24-03-202.md
+2025.03.06 16:24:02 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:24:02 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:24:03 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:24:03 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-24-03-711.md
+2025.03.06 16:24:04 WARN  no build target for: /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java
+2025.03.06 16:24:04 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:24:04 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-24-04-520.md
+2025.03.06 16:24:04 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:24:11 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:24:18 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:25:28 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:26:01 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:26:10 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:27:03 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:27:52 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+2025.03.06 16:34:01 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:34:01 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-34-01-926.md
+2025.03.06 16:34:18 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:34:18 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-34-18-313.md
+Mar 06, 2025 4:34:26 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+2025.03.06 16:34:36 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:34:36 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:34:37 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:34:38 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:34:38 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-34-38-279.md
+2025.03.06 16:34:38 WARN  no build target for: /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java
+Mar 06, 2025 4:34:38 PM scala.meta.internal.metals.StdReporter $anonfun$create$1
+SEVERE: QDox parse error in file:///home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java (full report at: /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_qdox-error_16-23-56-285.md)
+2025.03.06 16:34:38 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:34:38 WARN  Running javac-semanticdb failed for file:///home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Output:
+
+Mar 06, 2025 4:34:39 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-34-39-025.md
+Mar 06, 2025 4:34:40 PM scala.meta.internal.metals.StdReporter $anonfun$create$1
+SEVERE: QDox parse error in file:///home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java (full report at: /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_qdox-error_16-23-56-285.md)
+2025.03.06 16:34:40 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:34:44 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:34:44 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:34:44 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:34:44 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-34-44-701.md
+2025.03.06 16:34:44 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:34:45 WARN  no build target for: /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java
+Mar 06, 2025 4:34:45 PM scala.meta.internal.metals.StdReporter $anonfun$create$1
+SEVERE: QDox parse error in file:///home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java (full report at: /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_qdox-error_16-23-56-285.md)
+2025.03.06 16:34:45 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:34:45 WARN  Running javac-semanticdb failed for file:///home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Output:
+
+Mar 06, 2025 4:34:45 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-34-45-445.md
+2025.03.06 16:34:45 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:34:45 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:34:45 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-34-45-960.md
+2025.03.06 16:34:46 WARN  no build target for: /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java
+Mar 06, 2025 4:34:46 PM scala.meta.internal.metals.StdReporter $anonfun$create$1
+SEVERE: QDox parse error in file:///home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java (full report at: /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_qdox-error_16-23-56-285.md)
+2025.03.06 16:34:45 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:34:46 WARN  Running javac-semanticdb failed for file:///home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Output:
+
+Mar 06, 2025 4:34:46 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-34-46-702.md
+2025.03.06 16:34:50 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:34:51 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-34-51-033.md
+2025.03.06 16:34:50 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:34:52 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:34:52 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-34-52-128.md
+2025.03.06 16:34:52 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:34:53 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:34:53 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-34-53-245.md
+2025.03.06 16:34:53 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:34:59 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:34:59 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:35:00 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-35-00-008.md
+2025.03.06 16:34:59 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:35:00 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:35:00 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-35-00-671.md
+2025.03.06 16:35:01 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:35:01 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:35:01 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:35:01 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-35-01-454.md
+2025.03.06 16:35:01 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:35:02 WARN  no build target for: /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java
+2025.03.06 16:35:01 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:35:02 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-35-02-224.md
+2025.03.06 16:35:02 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:35:02 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:35:02 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-35-02-858.md
+2025.03.06 16:35:02 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:35:03 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-35-03-286.md
+2025.03.06 16:35:04 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:35:04 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:35:05 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+2025.03.06 16:35:06 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:35:06 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-35-06-106.md
+2025.03.06 16:35:05 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:35:06 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-35-06-608.md
+Mar 06, 2025 4:35:06 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 992
+2025.03.06 16:35:06 WARN  no build target for: /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java
+2025.03.06 16:35:06 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/java/com/example/tests/ApiTests.java. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:35:06 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: A severe compiler error occurred, full details of the error can be found in the error report /home/hatemnefzi/springboot-cicd/.metals/.reports/metals-full/2025-03-06/r_compiler-error_16-35-06-869.md
+Mar 06, 2025 4:35:36 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:36:06 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:37:42 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:37:45 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+2025.03.06 16:37:45 INFO  no build target found for /home/hatemnefzi/springboot-cicd/src/test/scala/com/example/simulations/HelloControllerSimulation.scala. Using presentation compiler with project's scala-library version: 3.3.4
+Mar 06, 2025 4:38:06 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:38:09 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:38:10 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:38:18 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:38:25 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:38:49 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:38:56 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:39:27 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:41:08 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:42:00 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:43:12 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:43:19 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:44:34 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:45:30 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:58:18 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:58:21 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:58:25 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:58:32 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:58:39 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 4:59:31 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:01:15 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:01:15 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:01:49 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:02:10 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:02:14 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:02:27 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:03:28 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:03:29 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:03:42 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:03:58 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:04:09 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:04:39 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:05:15 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:05:24 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:05:31 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:05:41 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:06:04 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:07:04 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:08:53 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:08:55 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:09:27 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:09:40 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:09:42 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:09:44 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:09:46 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:09:48 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:09:50 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:10:35 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:11:10 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:11:16 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:13:24 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:13:26 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:14:02 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:14:36 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:24:40 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:24:45 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:41:57 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:41:59 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:43:52 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:43:55 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:44:00 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:45:05 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:47:42 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:47:43 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:48:04 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 5:48:53 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 7:55:48 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 7:55:52 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 7:56:24 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 7:56:26 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 7:58:05 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 7:58:07 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 7:58:10 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
+Mar 06, 2025 7:59:18 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+WARNING: Unsupported notification method: metals/windowStateDidChange
