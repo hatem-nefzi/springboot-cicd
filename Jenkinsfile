@@ -71,6 +71,7 @@ spec:
         stage('Build') {
             steps {
                 container('maven') {
+                    
                     sh 'mvn clean package -DskipTests'
                 }
             }
@@ -79,6 +80,9 @@ spec:
         stage('Functional Tests') {
             steps {
                 container('maven') {
+                    // Install Playwright browsers before running the tests
+                    sh 'npm install playwright'
+                    sh 'npx playwright install' // Install required browsers
                     sh 'mvn test' // Runs Playwright tests
                 }
             }
