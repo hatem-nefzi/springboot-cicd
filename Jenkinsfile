@@ -71,7 +71,7 @@ spec:
         stage('Build') {
             steps {
                 container('maven') {
-                    sh 'mvn clean package' // Remove -DskipTests
+                    sh 'mvn clean package -DskipTests'
                 }
             }
         }
