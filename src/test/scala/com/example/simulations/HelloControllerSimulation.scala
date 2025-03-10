@@ -7,7 +7,7 @@ import scala.concurrent.duration._
 class HelloControllerSimulation extends Simulation {
 
   val httpProtocol = http
-    .baseUrl("http://localhost:8081") 
+    .baseUrl("http://192.168.1.2:8081") 
     .acceptHeader("application/json")
 
   val scn = scenario("HelloControllerSimulation")
