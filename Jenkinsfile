@@ -52,6 +52,19 @@ spec:
       requests:
         cpu: "500m"
         memory: "512Mi"
+    - name: playwright
+      image: mcr.microsoft.com/playwright:focal
+      command:
+      - cat
+      tty: true
+      workingDir: /home/jenkins/agent
+      resources:
+        limits:
+          cpu: "1"
+          memory: "1Gi"
+        requests:
+          cpu: "500m"
+          memory: "512Mi"
 """
         }
     }
@@ -97,8 +110,8 @@ spec:
 
         stage('Functional Tests') {
             steps {
-                container('maven') {
-                    image: 'maven:3.8-openjdk-17-slim'
+                container('playwright') {
+                    
                     // Install Node.js and npm (required for Playwright)
                     sh '''
                         apt-get update
