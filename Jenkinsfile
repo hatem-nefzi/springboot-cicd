@@ -61,12 +61,15 @@ spec:
         KUBE_CONFIG_PATH = "/var/lib/jenkins/.kube/config"
     }
 
-    stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main', url: 'https://github.com/hatem-nefzi/springboot-cicd'
-            }
-        }
+   stage('Checkout') {
+    steps {
+        git(
+            url: 'https://github.com/hatem-nefzi/springboot-cicd',
+            credentialsId: 'github-pat-credentials',
+            branch: 'main'
+        )
+    }
+}
 
         stage('Build') {
             steps {
