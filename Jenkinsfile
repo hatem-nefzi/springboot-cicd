@@ -81,7 +81,7 @@ spec:
         }
         stage('Run Gatling Tests') {
             steps {
-                container('gatling') {
+                container('maven') {
                     sh 'mvn gatling:test'
                 }
             }
