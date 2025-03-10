@@ -79,6 +79,21 @@ spec:
                 }
             }
         }
+        stage('Run Gatling Tests') {
+            steps {
+                container('gatling') {
+                    sh 'mvn gatling:test'
+                }
+            }
+            post {
+                always {
+                    // Archive Gatling reports
+                    archiveArtifacts artifacts: 'target/gatling/**/*', allowEmptyArchive: true
+                    // Publish Gatling reports (optional)
+                    gatlingArchive()
+                }
+            }
+        }
 
         stage('Functional Tests') {
             steps {
@@ -110,21 +125,7 @@ spec:
             }
         }
 
-        stage('Run Gatling Tests') {
-            steps {
-                container('gatling') {
-                    sh 'mvn gatling:test'
-                }
-            }
-            post {
-                always {
-                    // Archive Gatling reports
-                    archiveArtifacts artifacts: 'target/gatling/**/*', allowEmptyArchive: true
-                    // Publish Gatling reports (optional)
-                    gatlingArchive()
-                }
-            }
-        }
+        
 
         stage('Docker Build') {
             steps {
