@@ -61,15 +61,16 @@ spec:
         KUBE_CONFIG_PATH = "/var/lib/jenkins/.kube/config"
     }
 
-   stage('Checkout') {
-    steps {
-        git(
-            url: 'https://github.com/hatem-nefzi/springboot-cicd',
-            credentialsId: 'github-pat-credentials',
-            branch: 'main'
-        )
-    }
-}
+    stages {
+        stage('Checkout') {
+            steps {
+                git(
+                    url: 'https://github.com/hatem-nefzi/springboot-cicd',
+                    credentialsId: 'github-pat-credentials',
+                    branch: 'main'
+                )
+            }
+        }
 
         stage('Build') {
             steps {
@@ -169,3 +170,4 @@ spec:
             slackSend channel: '#dev-team', message: 'Pipeline failed!'
         }
     }
+}
