@@ -6,65 +6,66 @@ pipeline {
 apiVersion: v1
 kind: Pod
 metadata:
-    name: jenkins-agent
-    labels:
-        jenkins-agent: true
+  name: jenkins-agent
+  labels:
+    jenkins-agent: true
 spec:
-    containers:
-    - name: jnlp
-        image: jenkins/inbound-agent:latest
-        args: ['\$(JENKINS_SECRET)', '\$(JENKINS_NAME)']
-        workingDir: /home/jenkins/agent
-        tty: true
-        ports:
-        - containerPort: 50000
-            protocol: TCP
-        resources:
-            limits:
-                cpu: "1"
-                memory: "1Gi"
-            requests:
-                cpu: "500m"
-                memory: "512Mi"
-    - name: maven
-        image: maven:3.8-openjdk-17
-        command:
-        - cat
-        tty: true
-        workingDir: /home/jenkins/agent
-        resources:
-            limits:
-                cpu: "1"
-                memory: "1Gi"
-            requests:
-                cpu: "500m"
-                memory: "512Mi"
-    - name: gatling
-        image: denvazh/gatling:latest
-        command:
-        - cat
-        tty: true
-        workingDir: /home/jenkins/agent
-        resources:
-            limits:
-                cpu: "1"
-                memory: "1Gi"
-            requests:
-                cpu: "500m"
-                memory: "512Mi"
-    - name: playwright
-        image: mcr.microsoft.com/playwright:focal
-        command:
-        - cat
-        tty: true
-        workingDir: /home/jenkins/agent
-        resources:
-            limits:
-                cpu: "1"
-                memory: "1Gi"
-            requests:
-                cpu: "500m"
-                memory: "512Mi"
+  containers:
+  - name: jnlp
+    image: jenkins/inbound-agent:latest
+    args: ['\$(JENKINS_SECRET)', '\$(JENKINS_NAME)']
+    workingDir: /home/jenkins/agent
+    tty: true
+    ports:
+    - containerPort: 50000
+      protocol: TCP
+    resources:
+      limits:
+        cpu: "1"
+        memory: "1Gi"
+      requests:
+        cpu: "500m"
+        memory: "512Mi"
+  - name: maven
+    image: maven:3.8-openjdk-17
+    command:
+    - cat
+    tty: true
+    workingDir: /home/jenkins/agent
+    resources:
+      limits:
+        cpu: "1"
+        memory: "1Gi"
+      requests:
+        cpu: "500m"
+        memory: "512Mi"
+  - name: gatling
+    image: denvazh/gatling:latest
+    command:
+    - cat
+    tty: true
+    workingDir: /home/jenkins/agent
+    resources:
+      limits:
+        cpu: "1"
+        memory: "1Gi"
+      requests:
+        cpu: "500m"
+        memory: "512Mi"
+  - name: playwright
+    image: mcr.microsoft.com/playwright:focal
+    command:
+    - cat
+    tty: true
+    workingDir: /home/jenkins/agent
+    resources:
+      limits:
+        cpu: "1"
+        memory: "1Gi"
+      requests:
+        cpu: "500m"
+        memory: "512Mi"
+"""
         }
     }
 
@@ -91,6 +92,7 @@ spec:
                 }
             }
         }
+
         stage('Run Gatling Tests') {
             steps {
                 container('maven') {
@@ -110,15 +112,6 @@ spec:
         stage('Functional Tests') {
             steps {
                 container('playwright') {
-                    
-                    // Install Node.js and npm (required for Playwright)
-                    sh '''
-                        apt-get update
-                        apt-get install -y nodejs npm
-                        npm install playwright
-                        npx playwright install
-                        echo "Playwright installation complete"
-                    '''
                     sh 'mvn test' // Runs Playwright tests
                 }
             }
@@ -137,8 +130,6 @@ spec:
                 }
             }
         }
-
-        
 
         stage('Docker Build') {
             steps {
