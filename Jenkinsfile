@@ -98,6 +98,7 @@ spec:
         stage('Functional Tests') {
             steps {
                 container('maven') {
+                    image: 'maven:3.8-openjdk-17-slim'
                     // Install Node.js and npm (required for Playwright)
                     sh '''
                         apt-get update
