@@ -111,7 +111,7 @@ spec:
 
         stage('Functional Tests') {
             steps {
-                container('playwright') {
+                container('maven') {
                     sh 'mvn test' // Runs Playwright tests
                 }
             }
