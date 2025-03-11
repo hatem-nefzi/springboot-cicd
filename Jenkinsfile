@@ -32,6 +32,8 @@ spec:
     - cat
     tty: true
     workingDir: /home/jenkins/agent
+    securityContext:
+      privileged: true
     resources:
       limits:
         cpu: "1"
