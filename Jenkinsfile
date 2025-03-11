@@ -56,8 +56,6 @@ spec:
         memory: "512Mi"
   - name: kaniko
     image: gcr.io/kaniko-project/executor:latest
-    command:
-    - cat
     tty: true
     workingDir: /home/jenkins/agent
     resources:
