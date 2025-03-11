@@ -125,10 +125,11 @@ spec:
             steps {
             container('maven') {
                 sh '''
-                # Install Buildah (if not already installed)
-                if ! command -v buildah &> /dev/null; then
-                apt-get update && apt-get install -y buildah
-                fi
+                # Install dependencies
+                apt-get update && apt-get install -y buildah runc
+
+                # Ensure Buildah uses runc instead of crun
+                export BUILDAH_RUNTIME=runc
 
                 # Build the Docker image using Buildah
                 buildah bud -t $DOCKER_IMAGE -f $WORKSPACE/Dockerfile $WORKSPACE
@@ -139,6 +140,7 @@ spec:
             }
             }
         }
+
 
 
         stage('Docker Push') {
