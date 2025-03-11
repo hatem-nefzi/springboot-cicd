@@ -54,17 +54,7 @@ spec:
       requests:
         cpu: "500m"
         memory: "512Mi"
-  - name: kaniko
-    image: gcr.io/kaniko-project/executor:latest
-    tty: true
-    workingDir: /home/jenkins/agent
-    resources:
-      limits:
-        cpu: "500m"
-        memory: "512Mi"
-      requests:
-        cpu: "500m"
-        memory: "512Mi"
+  
 """
         }
     }
@@ -133,12 +123,15 @@ spec:
 
         stage('Docker Build') {
             steps {
-            container('kaniko') {
+            container('maven') {
                 sh '''
-                /kaniko/executor \
-                    --context=/home/jenkins/agent \
-                    --dockerfile=/home/jenkins/agent/Dockerfile \
-                    --destination=$DOCKER_IMAGE
+                # Start the Docker daemon with the vfs storage driver
+                dockerd --storage-driver=vfs &
+                sleep 10 # Wait for the Docker daemon to start
+
+                # Build the Docker image
+                docker buildx create --use
+                docker buildx build -t $DOCKER_IMAGE --load .
                 '''
             }
             }
