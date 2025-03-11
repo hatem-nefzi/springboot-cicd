@@ -125,17 +125,13 @@ spec:
             steps {
             container('maven') {
                 sh '''
-                # Start the Docker daemon with the vfs storage driver
-                dockerd --storage-driver=vfs &
-                sleep 10 # Wait for the Docker daemon to start
-
-                # Build the Docker image
-                docker buildx create --use
-                docker buildx build -t $DOCKER_IMAGE --load .
-                '''
-            }
-            }
+                sudo dockerd --storage-driver=vfs &
+                sudo docker buildx create --use
+                sudo docker buildx build -t $DOCKER_IMAGE --load .
+            '''
         }
+    }
+}
 
         stage('Docker Push') {
             steps {
