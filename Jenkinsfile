@@ -125,13 +125,18 @@ spec:
             steps {
             container('maven') {
                 sh '''
-                dockerd --storage-driver=vfs &
-                docker buildx create --use
-                docker buildx build -t $DOCKER_IMAGE --load .
-            '''
+                # Install Buildah
+                apt-get update && apt-get install -y buildah
+
+                # Build the Docker image using Buildah
+                buildah bud -t $DOCKER_IMAGE -f /home/jenkins/agent/Dockerfile /home/jenkins/agent
+
+                # Push the Docker image using Buildah
+                buildah push $DOCKER_IMAGE docker://$DOCKER_IMAGE
+                '''
+            }
+            }
         }
-    }
-}
 
         stage('Docker Push') {
             steps {
