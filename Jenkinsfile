@@ -125,9 +125,9 @@ spec:
             steps {
             container('maven') {
                 sh '''
-                sudo dockerd --storage-driver=vfs &
-                sudo docker buildx create --use
-                sudo docker buildx build -t $DOCKER_IMAGE --load .
+                dockerd --storage-driver=vfs &
+                docker buildx create --use
+                docker buildx build -t $DOCKER_IMAGE --load .
             '''
         }
     }
