@@ -27,7 +27,7 @@ spec:
         cpu: "500m"
         memory: "512Mi"
   - name: maven
-    image: maven:3.8-openjdk-17
+    image: hatemnefzi/maven-docker:latest
     command:
     - cat
     tty: true
