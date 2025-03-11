@@ -13,7 +13,7 @@ spec:
   containers:
   - name: jnlp
     image: jenkins/inbound-agent:latest
-    args: ['\$(JENKINS_SECRET)', '\$(JENKINS_NAME)']
+    args: ['$\(JENKINS_SECRET)', '$\(JENKINS_NAME)']
     workingDir: /home/jenkins/agent
     tty: true
     ports:
@@ -57,7 +57,7 @@ spec:
   - name: kaniko
     image: gcr.io/kaniko-project/executor:latest
     command:
-    - busybox/cat
+    - /busybox/cat
     tty: true
     workingDir: /home/jenkins/agent
     resources:
@@ -67,7 +67,6 @@ spec:
       requests:
         cpu: "500m"
         memory: "512Mi"
- 
 """
         }
     }
