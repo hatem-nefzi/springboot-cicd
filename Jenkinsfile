@@ -54,7 +54,7 @@ spec:
       requests:
         cpu: "500m"
         memory: "512Mi"
-    - name: kaniko
+  - name: kaniko
     image: gcr.io/kaniko-project/executor:latest
     command:
     - busybox/cat
