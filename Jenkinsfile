@@ -123,6 +123,9 @@ spec:
             steps {
                 container('maven') {
                     sh '''
+                        # Start the Docker daemon in the background
+                        dockerd &
+                        sleep 10 # Wait for the Docker daemon to start
                         docker buildx create --use
                         docker buildx build -t $DOCKER_IMAGE --load .
                     '''
