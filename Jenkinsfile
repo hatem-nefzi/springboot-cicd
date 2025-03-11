@@ -125,11 +125,13 @@ spec:
             steps {
             container('maven') {
                 sh '''
-                # Install Buildah
+                # Install Buildah (if not already installed)
+                if ! command -v buildah &> /dev/null; then
                 apt-get update && apt-get install -y buildah
+                fi
 
                 # Build the Docker image using Buildah
-                buildah bud -t $DOCKER_IMAGE -f /home/jenkins/agent/Dockerfile /home/jenkins/agent
+                buildah bud -t $DOCKER_IMAGE -f $WORKSPACE/Dockerfile $WORKSPACE
 
                 # Push the Docker image using Buildah
                 buildah push $DOCKER_IMAGE docker://$DOCKER_IMAGE
@@ -137,6 +139,7 @@ spec:
             }
             }
         }
+
 
         stage('Docker Push') {
             steps {
