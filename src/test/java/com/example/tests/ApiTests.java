@@ -15,7 +15,7 @@ public class ApiTests {
     static void setup() {
         playwright = Playwright.create();
         request = playwright.request().newContext(new APIRequest.NewContextOptions()
-                .setBaseURL("http://localhost:8081")); 
+                .setBaseURL("http://192.168.1.16:8081")); 
     }
 
     @AfterAll
