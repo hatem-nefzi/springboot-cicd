@@ -52,19 +52,7 @@ spec:
       requests:
         cpu: "500m"
         memory: "512Mi"
-  - name: playwright
-    image: mcr.microsoft.com/playwright:focal
-    command:
-    - cat
-    tty: true
-    workingDir: /home/jenkins/agent
-    resources:
-      limits:
-        cpu: "1"
-        memory: "1Gi"
-      requests:
-        cpu: "500m"
-        memory: "512Mi"
+ 
 """
         }
     }
