@@ -123,6 +123,17 @@ volumes:
             }
         }
 
+        stage('Debug') {
+            steps {
+            container('maven') {
+                sh '''
+                echo "PATH: $PATH"
+                which docker
+                '''
+            }
+            }
+        }
+
 
 
         stage('Docker Push') {
