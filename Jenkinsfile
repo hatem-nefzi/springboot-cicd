@@ -32,8 +32,9 @@ spec:
     - cat
     tty: true
     workingDir: /home/jenkins/agent
-    securityContext:
-      privileged: true
+    volumeMounts:
+    - name: docker-socket
+      mountPath: /var/run/docker.sock
     resources:
       limits:
         cpu: "1"
@@ -41,20 +42,10 @@ spec:
       requests:
         cpu: "500m"
         memory: "512Mi"
-  - name: gatling
-    image: denvazh/gatling:latest
-    command:
-    - cat
-    tty: true
-    workingDir: /home/jenkins/agent
-    resources:
-      limits:
-        cpu: "1"
-        memory: "1Gi"
-      requests:
-        cpu: "500m"
-        memory: "512Mi"
-  
+volumes:
+- name: docker-socket
+  hostPath:
+    path: /var/run/docker.sock
 """
         }
     }
@@ -123,21 +114,12 @@ spec:
 
         stage('Docker Build') {
             steps {
-            container('maven') {
-                sh '''
-                # Install dependencies
-                apt-get update && apt-get install -y buildah runc
-
-                # Ensure Buildah uses runc instead of crun
-                export BUILDAH_RUNTIME=runc
-
-                # Build the Docker image using Buildah
-                buildah bud -t $DOCKER_IMAGE -f $WORKSPACE/Dockerfile $WORKSPACE
-
-                # Push the Docker image using Buildah
-                buildah push $DOCKER_IMAGE docker://$DOCKER_IMAGE
-                '''
-            }
+                container('maven') {
+                    sh '''
+                        docker buildx create --use
+                        docker buildx build -t $DOCKER_IMAGE --load .
+                    '''
+                }
             }
         }
 
