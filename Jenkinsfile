@@ -138,11 +138,16 @@ volumes:
 
         stage('Docker Push') {
             steps {
-                withDockerRegistry([credentialsId: 'docker-hub-credentials', url: 'https://index.docker.io/v1/']) {
-                    container('maven') {
-                        sh 'docker push $DOCKER_IMAGE'
-                    }
+            withDockerRegistry([credentialsId: 'docker-hub-credentials', url: 'https://index.docker.io/v1/']) {
+                container('maven') {
+                sh '''
+                    echo "Pushing Docker image: $DOCKER_IMAGE"
+                    export PATH=/usr/bin:$PATH
+                    docker images
+                    docker push $DOCKER_IMAGE
+                '''
                 }
+            }
             }
         }
 
