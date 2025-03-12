@@ -141,9 +141,12 @@ volumes:
             withDockerRegistry([credentialsId: 'docker-hub-credentials', url: 'https://index.docker.io/v1/']) {
                 container('maven') {
                 sh '''
-                    echo "Pushing Docker image: $DOCKER_IMAGE"
-                    export PATH=/usr/bin:$PATH
+                    echo "PATH: $PATH"
+                    echo "Docker version:"
+                    docker --version
+                    echo "Docker images:"
                     docker images
+                    echo "Pushing Docker image: $DOCKER_IMAGE"
                     docker push $DOCKER_IMAGE
                 '''
                 }
