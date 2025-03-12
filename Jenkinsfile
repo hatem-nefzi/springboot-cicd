@@ -129,6 +129,7 @@ volumes:
                 sh '''
                 echo "PATH: $PATH"
                 which docker
+                docker --version
                 '''
             }
             }
