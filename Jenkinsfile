@@ -60,7 +60,7 @@ volumes:
             steps {
                 git(
                     url: 'https://github.com/hatem-nefzi/springboot-cicd',
-                    credentialsId: 'github-pat-credentials',
+                    credentialsId: 'github-credentials',
                     branch: 'main'
                 )
             }
