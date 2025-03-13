@@ -152,8 +152,8 @@ volumes:
 
         stage('Docker Push') {
             steps {
-            withDockerRegistry([credentialsId: 'docker-hub-credentials', url: 'https://index.docker.io/v1/']) {
-                container('maven') {
+            container('maven') {
+                withDockerRegistry([credentialsId: 'docker-hub-credentials', url: 'https://index.docker.io/v1/']) {
                 sh '''
                     echo "PATH: $PATH"
                     echo "Docker version:"
