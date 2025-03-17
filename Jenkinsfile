@@ -8,7 +8,7 @@ kind: Pod
 metadata:
   name: jenkins-agent
   labels:
-    jenkins-agent: "true"
+    jenkins-agent: true
 spec:
   containers:
   - name: jnlp
@@ -28,7 +28,8 @@ spec:
         memory: "512Mi"
   - name: maven
     image: hatemnefzi/maven-docker:latest
-    command: ["cat"]
+    command:
+    - cat
     tty: true
     workingDir: /home/jenkins/agent
     volumeMounts:
@@ -43,7 +44,7 @@ spec:
         memory: "512Mi"
   - name: kubectl
     image: bitnami/kubectl:latest
-    command: ["cat"]
+    command: ['cat']
     tty: true
     workingDir: /home/jenkins/agent
     volumeMounts:
@@ -70,11 +71,11 @@ spec:
             steps {
                 checkout([
                     $class: 'GitSCM',
-                    branches: [[name: '*/main']],
+                    branches: [[name: '*/main']],  // Check out the 'main' branch
                     extensions: [],
                     userRemoteConfigs: [[
                         url: 'git@github.com:hatem-nefzi/springboot-cicd.git',
-                        credentialsId: 'SSH'
+                        credentialsId: 'SSH'  // Use the correct credentials ID
                     ]]
                 ])
             }
@@ -96,7 +97,9 @@ spec:
             }
             post {
                 always {
+                    // Archive Gatling reports
                     archiveArtifacts artifacts: 'target/gatling/**/*', allowEmptyArchive: true
+                    // Publish Gatling reports (optional)
                     gatlingArchive()
                 }
             }
@@ -105,12 +108,13 @@ spec:
         stage('Functional Tests') {
             steps {
                 container('maven') {
-                    sh 'mvn test'
+                    sh 'mvn test' // Runs Playwright tests
                 }
             }
             post {
                 always {
                     script {
+                        // Check if test reports exist
                         def testReports = findFiles(glob: 'target/surefire-reports/*.xml')
                         if (testReports) {
                             junit 'target/surefire-reports/*.xml'
@@ -166,12 +170,14 @@ spec:
 
         stage('Deploy') {
             steps {
-                container('kubectl') {
-                    sh '''
-                        kubectl set image deployment/spring-boot-app spring-boot-app=$DOCKER_IMAGE --record
-                        kubectl rollout status deployment/spring-boot-app
-                        kubectl get pods
-                    '''
+                script {
+                    container('kubectl') {
+                        sh '''
+                            kubectl set image deployment/spring-boot-app spring-boot-app=hatemnefzi/spring-boot-app:latest --record
+                            kubectl rollout status deployment/spring-boot-app
+                            kubectl get pods
+                        '''
+                    }
                 }
             }
         }
