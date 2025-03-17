@@ -8,7 +8,7 @@ kind: Pod
 metadata:
   name: jenkins-agent
   labels:
-    jenkins-agent: true
+    jenkins-agent: "true"
 spec:
   containers:
   - name: jnlp
@@ -28,8 +28,7 @@ spec:
         memory: "512Mi"
   - name: maven
     image: hatemnefzi/maven-docker:latest
-    command:
-    - cat
+    command: ["cat"]
     tty: true
     workingDir: /home/jenkins/agent
     volumeMounts:
@@ -44,7 +43,7 @@ spec:
         memory: "512Mi"
   - name: kubectl
     image: bitnami/kubectl:latest
-    command: ['cat']
+    command: ["cat"]
     tty: true
     workingDir: /home/jenkins/agent
     volumeMounts:
@@ -60,7 +59,6 @@ spec:
 """
         }
     }
-}
 
     environment {
         DOCKER_IMAGE = "hatemnefzi/spring-boot-app:latest"
@@ -68,24 +66,15 @@ spec:
     }
 
     stages {
-        /*stage('Checkout') {
-            steps {
-                git(
-                    url: 'https://github.com/hatem-nefzi/springboot-cicd',
-                    credentialsId: 'github-pat-credentials',
-                    branch: 'main'
-                )
-            }
-        }*/ //old way to checkout the code
         stage('Checkout') {
             steps {
                 checkout([
                     $class: 'GitSCM',
-                    branches: [[name: '*/main']],  // Check out the 'main' branch
+                    branches: [[name: '*/main']],
                     extensions: [],
                     userRemoteConfigs: [[
                         url: 'git@github.com:hatem-nefzi/springboot-cicd.git',
-                        credentialsId: 'SSH'  // Use the correct credentials ID
+                        credentialsId: 'SSH'
                     ]]
                 ])
             }
@@ -107,9 +96,7 @@ spec:
             }
             post {
                 always {
-                    // Archive Gatling reports
                     archiveArtifacts artifacts: 'target/gatling/**/*', allowEmptyArchive: true
-                    // Publish Gatling reports (optional)
                     gatlingArchive()
                 }
             }
@@ -118,13 +105,12 @@ spec:
         stage('Functional Tests') {
             steps {
                 container('maven') {
-                    sh 'mvn test' // Runs Playwright tests
+                    sh 'mvn test'
                 }
             }
             post {
                 always {
                     script {
-                        // Check if test reports exist
                         def testReports = findFiles(glob: 'target/surefire-reports/*.xml')
                         if (testReports) {
                             junit 'target/surefire-reports/*.xml'
@@ -150,46 +136,42 @@ spec:
 
         stage('Debug') {
             steps {
-            container('maven') {
-                sh '''
-                echo "PATH: $PATH"
-                which docker
-                docker --version
-                '''
-            }
+                container('maven') {
+                    sh '''
+                        echo "PATH: $PATH"
+                        which docker
+                        docker --version
+                    '''
+                }
             }
         }
 
-
-
         stage('Docker Push') {
             steps {
-            container('maven') {
-                withDockerRegistry([credentialsId: 'docker-hub-credentials', url: 'https://index.docker.io/v1/']) {
-                sh '''
-                    echo "PATH: $PATH"
-                    echo "Docker version:"
-                    docker --version
-                    echo "Docker images:"
-                    docker images
-                    echo "Pushing Docker image: $DOCKER_IMAGE"
-                    docker push $DOCKER_IMAGE
-                '''
+                container('maven') {
+                    withDockerRegistry([credentialsId: 'docker-hub-credentials', url: 'https://index.docker.io/v1/']) {
+                        sh '''
+                            echo "PATH: $PATH"
+                            echo "Docker version:"
+                            docker --version
+                            echo "Docker images:"
+                            docker images
+                            echo "Pushing Docker image: $DOCKER_IMAGE"
+                            docker push $DOCKER_IMAGE
+                        '''
+                    }
                 }
-            }
             }
         }
 
         stage('Deploy') {
             steps {
-                script {
-                    container('maven') {
-                        sh '''
-                            kubectl set image deployment/spring-boot-app spring-boot-app=hatemnefzi/spring-boot-app:latest --record
-                            kubectl rollout status deployment/spring-boot-app
-                            kubectl get pods
-                        '''
-                    }
+                container('kubectl') {
+                    sh '''
+                        kubectl set image deployment/spring-boot-app spring-boot-app=$DOCKER_IMAGE --record
+                        kubectl rollout status deployment/spring-boot-app
+                        kubectl get pods
+                    '''
                 }
             }
         }
@@ -203,3 +185,4 @@ spec:
             slackSend channel: '#dev-team', message: 'Pipeline failed!'
         }
     }
+}
