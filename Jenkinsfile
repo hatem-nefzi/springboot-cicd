@@ -203,4 +203,3 @@ spec:
             slackSend channel: '#dev-team', message: 'Pipeline failed!'
         }
     }
-}
