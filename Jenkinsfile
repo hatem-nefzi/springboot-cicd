@@ -42,13 +42,25 @@ spec:
       requests:
         cpu: "500m"
         memory: "512Mi"
-volumes:
-- name: docker-socket
-  hostPath:
-    path: /var/run/docker.sock
+  - name: kubectl
+    image: bitnami/kubectl:latest
+    command: ['cat']
+    tty: true
+    workingDir: /home/jenkins/agent
+    volumeMounts:
+    - name: kube-config
+      mountPath: /root/.kube
+  volumes:
+  - name: docker-socket
+    hostPath:
+      path: /var/run/docker.sock
+  - name: kube-config
+    hostPath:
+      path: /var/lib/jenkins/.kube
 """
         }
     }
+}
 
     environment {
         DOCKER_IMAGE = "hatemnefzi/spring-boot-app:latest"
