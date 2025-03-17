@@ -64,6 +64,7 @@ spec:
     environment {
         DOCKER_IMAGE = "hatemnefzi/spring-boot-app:latest"
         KUBE_CONFIG_PATH = "/var/lib/jenkins/.kube/config"
+
     }
 
     stages {
@@ -101,6 +102,15 @@ spec:
                     archiveArtifacts artifacts: 'target/gatling/**/*', allowEmptyArchive: true
                     // Publish Gatling reports (optional)
                     gatlingArchive()
+                }
+            }
+        }
+
+         stage('Clean Playwright Cache') {
+            steps {
+                container('maven') {
+                    sh 'rm -rf /home/jenkins/agent/playwright-browsers'
+                    sh 'mvn exec:java -Dexec.mainClass="com.microsoft.playwright.CLI" -Dexec.args="install --force"'
                 }
             }
         }
