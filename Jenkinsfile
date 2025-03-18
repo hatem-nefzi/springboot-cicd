@@ -182,16 +182,18 @@ spec:
             steps {
                 script {
                     container('kubectl') {
-                        sh '''
-                            kubectl set image deployment/spring-boot-app spring-boot-app=hatemnefzi/spring-boot-app:latest --record
-                            kubectl rollout status deployment/spring-boot-app
-                            kubectl get pods
-                        '''
+                        withCredentials([file(credentialsId: 'kubeconfig-credential', variable: 'KUBECONFIG')]) {
+                            sh '''
+                                export KUBECONFIG=${KUBECONFIG}
+                                kubectl set image deployment/spring-boot-app spring-boot-app=hatemnefzi/spring-boot-app:latest --record
+                                kubectl rollout status deployment/spring-boot-app
+                                kubectl get pods
+                            '''
+                        }
                     }
                 }
             }
         }
-    }
 
     post {
         success {
