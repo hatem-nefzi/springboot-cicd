@@ -60,13 +60,10 @@ spec:
 """
         }
     }
-    
-    }
 
     environment {
         DOCKER_IMAGE = "hatemnefzi/spring-boot-app:latest"
         KUBE_CONFIG_PATH = "/var/lib/jenkins/.kube/config"
-
     }
 
     stages {
@@ -108,7 +105,7 @@ spec:
             }
         }
 
-         stage('Clean Playwright Cache') {
+        stage('Clean Playwright Cache') {
             steps {
                 container('maven') {
                     sh 'rm -rf /home/jenkins/agent/playwright-browsers'
@@ -187,7 +184,7 @@ spec:
                         withCredentials([file(credentialsId: 'kubeconfig-credential', variable: 'KUBECONFIG')]) {
                             sh '''
                                 export KUBECONFIG=${KUBECONFIG}
-                                kubectl set image deployment/spring-boot-app spring-boot-app=hatemnefzi/spring-boot-app:latest --record
+                                kubectl set image deployment/spring-boot-app spring-boot-app=$DOCKER_IMAGE --record
                                 kubectl rollout status deployment/spring-boot-app
                                 kubectl get pods
                             '''
@@ -196,6 +193,7 @@ spec:
                 }
             }
         }
+    }
 
     post {
         success {
