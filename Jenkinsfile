@@ -10,6 +10,7 @@ metadata:
   labels:
     jenkins-agent: true
 spec:
+  serviceAccountName: jenkins-agent-sa  # Using the new service account in order to fix permission issues (default service account didnt have permissions)
   containers:
   - name: jnlp
     image: jenkins/inbound-agent:latest
