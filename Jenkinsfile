@@ -60,6 +60,8 @@ spec:
 """
         }
     }
+    
+    }
 
     environment {
         DOCKER_IMAGE = "hatemnefzi/spring-boot-app:latest"
