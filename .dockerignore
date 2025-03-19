@@ -1,0 +1,24 @@
+# Ignore Maven target directory (already built in Stage 1)
+target/
+
+# Ignore Git files
+.git/
+.gitignore
+.gitattributes
+
+# Ignore IDE and editor metadata
+*.iml
+.idea/
+.vscode/
+.metals/
+
+# Ignore Maven wrapper cache
+.mvn/
+.mvn/wrapper/
+
+# Ignore test files (not needed in the final image)
+tests/
+
+# Ignore local Maven wrapper executables
+mvnw
+mvnw.cmd
