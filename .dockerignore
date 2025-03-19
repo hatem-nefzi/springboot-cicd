@@ -13,13 +13,13 @@ target/
 .metals/
 
 # Ignore Maven wrapper cache
-.mvn/
-.mvn/wrapper/
+#.mvn/
+#.mvn/wrapper/
 
 # Ignore test files (not needed in the final image)
 tests/
 
 # Ignore local Maven wrapper executables
-#mvnw
-#mvnw.cmd
+mvnw
+mvnw.cmd
 #removed these as they caused docker build issues 
