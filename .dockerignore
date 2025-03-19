@@ -1,25 +1,37 @@
 # Ignore Maven target directory (already built in Stage 1)
-target/
+#target/
 
 # Ignore Git files
-.git/
-.gitignore
-.gitattributes
+#.git/
+#.gitignore
+#.gitattributes
 
 # Ignore IDE and editor metadata
-*.iml
-.idea/
-.vscode/
-.metals/
+#*.iml
+#.idea/
+#.vscode/
+#.metals/
 
 # Ignore Maven wrapper cache
 #.mvn/
 #.mvn/wrapper/
 
 # Ignore test files (not needed in the final image)
-tests/
+#tests/
 
 # Ignore local Maven wrapper executables
 #mvnw
 #mvnw.cmd
 #removed these as they caused docker build issues 
+
+# Ignore everything by default
+*
+
+# Allow only the files needed for the build
+!pom.xml
+!src/
+!mvnw
+!mvnw.cmd
+!/.mvn/
+!application.properties
+!Dockerfile
