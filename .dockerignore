@@ -20,5 +20,6 @@ target/
 tests/
 
 # Ignore local Maven wrapper executables
-mvnw
-mvnw.cmd
+#mvnw
+#mvnw.cmd
+#removed these as they caused docker build issues 
