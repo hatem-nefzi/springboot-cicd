@@ -18,6 +18,11 @@ WORKDIR /app
 # Copy only the files needed for the build
 COPY pom.xml .
 COPY src ./src
+COPY mvnw .
+COPY .mvn/ .mvn/
+
+# Make mvnw executable
+RUN chmod +x mvnw
 
 # Build the application
 RUN ./mvnw clean package -DskipTests
