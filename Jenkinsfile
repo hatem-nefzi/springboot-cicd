@@ -10,16 +10,16 @@ metadata:
   labels:
     jenkins-agent: true
 spec:
-  serviceAccountName: jenkins-agent-sa  # Using the new service account in order to fix permission issues (default service account didnt have permissions)
+  serviceAccountName: jenkins-agent-sa
   containers:
   - name: jnlp
     image: jenkins/inbound-agent:latest
     args: ['\$(JENKINS_SECRET)', '\$(JENKINS_NAME)']
     workingDir: /home/jenkins/agent
     tty: true
-    ports:
-    - containerPort: 50000
-      protocol: TCP
+    volumeMounts:
+    - name: workspace-volume
+      mountPath: /home/jenkins/agent
     resources:
       limits:
         cpu: "1"
@@ -34,6 +34,8 @@ spec:
     tty: true
     workingDir: /home/jenkins/agent
     volumeMounts:
+    - name: workspace-volume
+      mountPath: /home/jenkins/agent
     - name: docker-socket
       mountPath: /var/run/docker.sock
     resources:
@@ -49,9 +51,13 @@ spec:
     tty: true
     workingDir: /home/jenkins/agent
     volumeMounts:
+    - name: workspace-volume
+      mountPath: /home/jenkins/agent
     - name: kube-config
       mountPath: /root/.kube
   volumes:
+  - name: workspace-volume
+    emptyDir: {}
   - name: docker-socket
     hostPath:
       path: /var/run/docker.sock
@@ -79,6 +85,20 @@ spec:
                         credentialsId: 'SSH'  // Use the correct credentials ID
                     ]]
                 ])
+            }
+        }
+
+        stage('Debug Workspace') {
+            steps {
+            container('jnlp') {
+                sh '''
+                echo "Current directory: $(pwd)"
+                echo "Workspace directory: /home/jenkins/agent"
+                ls -ld /home/jenkins/agent
+                mkdir -p /home/jenkins/agent/workspace
+                ls -ld /home/jenkins/agent/workspace
+                '''
+            }
             }
         }
 
