@@ -178,22 +178,25 @@ spec:
             }
         }
 
-        stage('Deploy') {
-            steps {
-                script {
-                    container('kubectl') {
-                        withCredentials([file(credentialsId: 'kubeconfig-credential', variable: 'KUBECONFIG')]) {
-                            sh '''
-                                export KUBECONFIG=${KUBECONFIG}
-                                kubectl set image deployment/spring-boot-app spring-boot-app=$DOCKER_IMAGE --record
-                                kubectl rollout status deployment/spring-boot-app
-                                kubectl get pods
-                            '''
-                        }
-                    }
+stage('Deploy') {
+    steps {
+        script {
+            container('kubectl') {
+                withCredentials([file(credentialsId: 'kubeconfig-credential', variable: 'KUBECONFIG')]) {
+                    sh '''
+                        echo "Debug: KUBECONFIG is set to ${KUBECONFIG}"
+                        export KUBECONFIG=${KUBECONFIG}
+                        echo "Debug: Running kubectl commands"
+                        kubectl version --client
+                        kubectl get pods
+                        kubectl set image deployment/spring-boot-app spring-boot-app=$DOCKER_IMAGE --record
+                        kubectl rollout status deployment/spring-boot-app
+                    '''
                 }
             }
         }
+    }
+}
     }
 
     post {
