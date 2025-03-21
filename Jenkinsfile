@@ -93,16 +93,13 @@ spec:
         }
 
         stage('Debug Workspace') {
-
-
             steps {
             container('jnlp') {
                 sh '''
                 echo "Current directory: $(pwd)"
-                echo "Workspace directory: /home/jenkins/agent"
-                ls -ld /home/jenkins/agent
-                mkdir -p /home/jenkins/agent/workspace
-                ls -ld /home/jenkins/agent/workspace
+                echo "Workspace directory: /var/lib/jenkins/workspace"
+                ls -ld /var/lib/jenkins/workspace
+                ls -l /var/lib/jenkins/workspace/springboot-cicd@tmp
                 '''
             }
             }
