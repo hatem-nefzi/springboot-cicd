@@ -92,18 +92,7 @@ spec:
             }
         }
 
-        stage('Debug Workspace') {
-            steps {
-            container('kubectl') {
-                sh '''
-                echo "Current directory: $(pwd)"
-                echo "Workspace directory: /var/lib/jenkins/workspace"
-                ls -ld /var/lib/jenkins/workspace
-                ls -l /var/lib/jenkins/workspace/springboot-cicd@tmp
-                '''
-            }
-            }
-        }
+        
 
         stage('Build') {
             steps {
