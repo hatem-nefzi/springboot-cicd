@@ -15,11 +15,14 @@ spec:
   - name: jnlp
     image: jenkins/inbound-agent:latest
     args: ['\$(JENKINS_SECRET)', '\$(JENKINS_NAME)']
-    workingDir: /home/jenkins/agent
+    workingDir: /var/lib/jenkins/workspace  # Update this
     tty: true
     volumeMounts:
     - name: workspace-volume
-      mountPath: /home/jenkins/agent
+      mountPath: /var/lib/jenkins/workspace  # Update this
+    securityContext:
+      runAsUser: 1000
+      fsGroup: 1000
     resources:
       limits:
         cpu: "1"
@@ -32,10 +35,10 @@ spec:
     command:
     - cat
     tty: true
-    workingDir: /home/jenkins/agent
+    workingDir: /var/lib/jenkins/workspace  # Update this
     volumeMounts:
     - name: workspace-volume
-      mountPath: /home/jenkins/agent
+      mountPath: /var/lib/jenkins/workspace  # Update this
     - name: docker-socket
       mountPath: /var/run/docker.sock
     resources:
@@ -49,15 +52,16 @@ spec:
     image: bitnami/kubectl:latest
     command: ['cat']
     tty: true
-    workingDir: /home/jenkins/agent
+    workingDir: /var/lib/jenkins/workspace  # Update this
     volumeMounts:
     - name: workspace-volume
-      mountPath: /home/jenkins/agent
+      mountPath: /var/lib/jenkins/workspace  # Update this
     - name: kube-config
       mountPath: /root/.kube
   volumes:
   - name: workspace-volume
-    emptyDir: {}
+    hostPath:
+      path: /var/lib/jenkins/workspace  # Mount the Jenkins workspace directory
   - name: docker-socket
     hostPath:
       path: /var/run/docker.sock
@@ -89,6 +93,8 @@ spec:
         }
 
         stage('Debug Workspace') {
+
+
             steps {
             container('jnlp') {
                 sh '''
