@@ -78,19 +78,7 @@ spec:
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                checkout([
-                    $class: 'GitSCM',
-                    branches: [[name: '*/main']],  // Check out the 'main' branch
-                    extensions: [],
-                    userRemoteConfigs: [[
-                        url: 'git@github.com:hatem-nefzi/springboot-cicd.git',
-                        credentialsId: 'SSH'  // Use the correct credentials ID
-                    ]]
-                ])
-            }
-        }
+        
 
         
 
