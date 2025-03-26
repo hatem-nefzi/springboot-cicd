@@ -269,21 +269,7 @@ EOF
                             mvn dependency:purge-local-repository -DactTransitively=false -DreResolve=false
                         fi
                         
-                        # 2. Workspace cleanup (preserves Jenkins metadata)
-                        echo "Cleaning workspace..."
-                        find . \
-                            -mindepth 1 \
-                            -maxdepth 1 \
-                            \( \
-                               -name target \
-                               -o -name node_modules \
-                               -o -name build \
-                               -o -name out \
-                               -o -name dist \
-                               -o -name ".gradle" \
-                               -o -name ".idea" \
-                               -o -name "*.log" \
-                            \) -exec rm -rf {} +
+                        
                         
                         # 3. Docker cleanup (safe - only removes dangling artifacts)
                         echo "Cleaning Docker..."
