@@ -50,7 +50,8 @@ spec:
         memory: "512Mi"
   - name: kubectl
     image: bitnami/kubectl:latest
-    command: ['cat']
+    command: ['sleep']
+    args: ['3600']
     tty: true
     workingDir: /var/lib/jenkins/workspace  # Update this
     volumeMounts:
@@ -192,17 +193,26 @@ spec:
 
 stage('Deploy') {
     steps {
-        script {
-            container('kubectl') {
-                withCredentials([file(credentialsId: 'kubeconfig-credential', variable: 'KUBECONFIG')]) {
-                    sh '''
+        container('kubectl') {
+            withCredentials([file(credentialsId: 'kubeconfig-credential', variable: 'KUBECONFIG')]) {
+                script {
+                    // Use sh with explicit shell
+                    sh '''#!/bin/sh
                         echo "Debug: KUBECONFIG is set to ${KUBECONFIG}"
-                        export KUBECONFIG=${KUBECONFIG}
-                        echo "Debug: Running kubectl commands"
-                        kubectl version --client
-                        kubectl get pods
-                        kubectl set image deployment/spring-boot-app spring-boot-app=$DOCKER_IMAGE --record
+                        cp ${KUBECONFIG} /tmp/kubeconfig
+                        chmod 600 /tmp/kubeconfig
+                        export KUBECONFIG=/tmp/kubeconfig
+                        
+                        echo "Current context:"
+                        kubectl config current-context
+                        
+                        echo "Deploying image: ${DOCKER_IMAGE}"
+                        kubectl set image deployment/spring-boot-app spring-boot-app=${DOCKER_IMAGE} --record
                         kubectl rollout status deployment/spring-boot-app
+                        
+                        # Verify deployment
+                        kubectl get deployments -o wide
+                        kubectl get pods
                     '''
                 }
             }
