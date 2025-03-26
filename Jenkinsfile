@@ -15,11 +15,11 @@ spec:
   - name: jnlp
     image: jenkins/inbound-agent:latest
     args: ['\$(JENKINS_SECRET)', '\$(JENKINS_NAME)']
-    workingDir: /var/lib/jenkins/workspace  # Update this
+    workingDir: /var/lib/jenkins/workspace
     tty: true
     volumeMounts:
     - name: workspace-volume
-      mountPath: /var/lib/jenkins/workspace  # Update this
+      mountPath: /var/lib/jenkins/workspace
     securityContext:
       runAsUser: 1000
       fsGroup: 1000
@@ -32,13 +32,12 @@ spec:
         memory: "512Mi"
   - name: maven
     image: hatemnefzi/maven-docker:latest
-    command:
-    - cat
+    command: ['cat']
     tty: true
-    workingDir: /var/lib/jenkins/workspace  # Update this
+    workingDir: /var/lib/jenkins/workspace
     volumeMounts:
     - name: workspace-volume
-      mountPath: /var/lib/jenkins/workspace  # Update this
+      mountPath: /var/lib/jenkins/workspace
     - name: docker-socket
       mountPath: /var/run/docker.sock
     resources:
@@ -49,33 +48,40 @@ spec:
         cpu: "500m"
         memory: "512Mi"
   - name: kubectl
-    image: alpine/k8s:1.25.10  # Includes kubectl + shell
+    image: alpine/k8s:1.25.10  # Changed to more complete image
     command: ['sleep']
-    args: ['3600']
-    tty: true
-    workingDir: /var/lib/jenkins/workspace  # Update this
+    args: ['infinity']  # Keeps container running
+    workingDir: /var/lib/jenkins/workspace
     volumeMounts:
     - name: workspace-volume
-      mountPath: /var/lib/jenkins/workspace  # Update this
+      mountPath: /var/lib/jenkins/workspace
+    - name: minikube-config  # Added for Minikube certs
+      mountPath: /home/jenkins/.minikube
     - name: kube-config
-      mountPath: /root/.kube
+      mountPath: /home/jenkins/.kube
+    env:
+    - name: KUBECONFIG
+      value: "/home/jenkins/.kube/config"
   volumes:
   - name: workspace-volume
     hostPath:
-      path: /var/lib/jenkins/workspace  # Mount the Jenkins workspace directory
+      path: /var/lib/jenkins/workspace
   - name: docker-socket
     hostPath:
       path: /var/run/docker.sock
   - name: kube-config
     hostPath:
-      path: /var/lib/jenkins/.kube
+      path: /home/jenkins/.kube  # Changed to match your actual path
+  - name: minikube-config  # Added volume for Minikube
+    hostPath:
+      path: /home/jenkins/.minikube
 """
         }
     }
 
     environment {
         DOCKER_IMAGE = "hatemnefzi/spring-boot-app:latest"
-        KUBE_CONFIG_PATH = "/var/lib/jenkins/.kube/config"
+        KUBE_CONFIG_PATH = "/home/jenkins/.kube/config"  # Updated path
     }
 
     stages {
@@ -83,17 +89,15 @@ spec:
             steps {
                 checkout([
                     $class: 'GitSCM',
-                    branches: [[name: '*/main']],  // Check out the 'main' branch
+                    branches: [[name: '*/main']],
                     extensions: [],
                     userRemoteConfigs: [[
                         url: 'git@github.com:hatem-nefzi/springboot-cicd.git',
-                        credentialsId: 'SSH'  // Use the correct credentials ID
+                        credentialsId: 'SSH'
                     ]]
                 ])
             }
         }
-
-        
 
         stage('Build') {
             steps {
@@ -111,9 +115,7 @@ spec:
             }
             post {
                 always {
-                    // Archive Gatling reports
                     archiveArtifacts artifacts: 'target/gatling/**/*', allowEmptyArchive: true
-                    // Publish Gatling reports (optional)
                     gatlingArchive()
                 }
             }
@@ -131,13 +133,12 @@ spec:
         stage('Functional Tests') {
             steps {
                 container('maven') {
-                    sh 'mvn test' // Runs Playwright tests
+                    sh 'mvn test'
                 }
             }
             post {
                 always {
                     script {
-                        // Check if test reports exist
                         def testReports = findFiles(glob: 'target/surefire-reports/*.xml')
                         if (testReports) {
                             junit 'target/surefire-reports/*.xml'
@@ -191,48 +192,56 @@ spec:
             }
         }
 
-stage('Deploy') {
-    steps {
-        container('kubectl') {
-            withCredentials([file(credentialsId: 'kubeconfig-credential', variable: 'KUBECONFIG')]) {
-                script {
-                    // Use sh with explicit shell
-                    sh '''#!/bin/sh
-                        echo "Debug: KUBECONFIG is set to ${KUBECONFIG}"
-                        cp ${KUBECONFIG} /tmp/kubeconfig
-                        chmod 600 /tmp/kubeconfig
-                        export KUBECONFIG=/tmp/kubeconfig
-                        
-                        echo "Current context:"
-                        kubectl config current-context
-                        
-                        echo "Deploying image: ${DOCKER_IMAGE}"
-                        kubectl set image deployment/spring-boot-app spring-boot-app=${DOCKER_IMAGE} --record
-                        kubectl rollout status deployment/spring-boot-app
-                        
-                        # Verify deployment
-                        kubectl get deployments -o wide
-                        kubectl get pods
-                    '''
+        stage('Deploy') {
+            steps {
+                container('kubectl') {
+                    script {
+                        sh '''
+                            echo "=== Verifying Minikube Access ==="
+                            ls -la /home/jenkins/.minikube/profiles/minikube/
+                            ls -la /home/jenkins/.kube/
+                            
+                            echo "=== Current kubectl Configuration ==="
+                            kubectl config get-contexts
+                            kubectl cluster-info
+                            
+                            echo "=== Deploying $DOCKER_IMAGE ==="
+                            kubectl set image deployment/spring-boot-app spring-boot-app=$DOCKER_IMAGE --record
+                            kubectl rollout status deployment/spring-boot-app --timeout=300s
+                            
+                            echo "=== Verification ==="
+                            kubectl get deployments
+                            kubectl get pods
+                        '''
+                    }
                 }
             }
         }
     }
-}
-    }
 
     post {
-    always {
-        // Safe workspace cleanup - only affects current build
-        container('maven') {
-            sh '''
-                echo "Cleaning workspace..."
-                rm -rf ${WORKSPACE}/* 2>/dev/null || true
-                
-                echo "Cleaning Maven cache..."
-                mvn dependency:purge-local-repository -DactTransitively=false -DreResolve=false || true
-            '''
+        always {
+            container('maven') {
+                dir("${WORKSPACE}") {
+                    sh '''
+                        # Only run if pom.xml exists
+                        if [ -f "pom.xml" ]; then
+                            mvn dependency:purge-local-repository -DactTransitively=false -DreResolve=false
+                        else
+                            echo "No pom.xml found - skipping Maven cleanup"
+                        fi
+                        
+                        # General workspace cleanup
+                        find . -mindepth 1 -maxdepth 1 ! -name 'workspace' -exec rm -rf {} +
+                    '''
+                }
+            }
+        }
+        success {
+            slackSend channel: '#dev-team', message: 'Pipeline succeeded!'
+        }
+        failure {
+            slackSend channel: '#dev-team', message: 'Pipeline failed!'
         }
     }
-} 
 }
