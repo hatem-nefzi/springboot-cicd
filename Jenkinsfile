@@ -55,8 +55,8 @@ spec:
     volumeMounts:
     - name: workspace-volume
       mountPath: /var/lib/jenkins/workspace
-    - name: minikube-config  # Added for Minikube certs
-      mountPath: /home/jenkins/.minikube
+    - name: jenkins-minikube   # changed volume name
+      mountPath: /var/lib/jenkins/.minikube
     - name: kube-config
       mountPath: /home/jenkins/.kube
     env:
@@ -72,9 +72,9 @@ spec:
   - name: kube-config
     hostPath:
       path: /home/jenkins/.kube  # Changed to match your actual path
-  - name: minikube-config  # Added volume for Minikube
+  - name: jenkins-minikube  # Added volume for Minikube
     hostPath:
-      path: /home/jenkins/.minikube
+      path: /var/lib/jenkins/.minikube  # Changed to match your actual path
 """
         }
     }
