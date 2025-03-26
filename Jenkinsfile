@@ -55,13 +55,13 @@ spec:
     volumeMounts:
     - name: workspace-volume
       mountPath: /var/lib/jenkins/workspace
-    - name: jenkins-minikube
-      mountPath: /var/lib/jenkins/.minikube
-    - name: kube-config
-      mountPath: /var/lib/jenkins/.kube
+    - name: minikube-certs
+      mountPath: /host-minikube  # Changed from jenkins-minikube
+    - name: kubeconfig-dir
+      mountPath: /tmp/kubeconfig # changed to /tmp which exists in container
     env:
     - name: KUBECONFIG
-      value: "/var/lib/jenkins/.kube/config"
+      value: "/tmp/kubeconfig/config" #instead of /var/lib/jenkins/.kube/config
   volumes:
   - name: workspace-volume
     hostPath:
@@ -69,19 +69,19 @@ spec:
   - name: docker-socket
     hostPath:
       path: /var/run/docker.sock
-  - name: kube-config
-    hostPath:
-      path: /var/lib/jenkins/.kube
-  - name: jenkins-minikube
+  - name: minikube-certs
     hostPath:
       path: /var/lib/jenkins/.minikube
+  - name: kubeconfig-dir
+    emptyDir: {}
+    
 """
         }
     }
 
     environment {
         DOCKER_IMAGE = "hatemnefzi/spring-boot-app:latest"
-        KUBE_CONFIG_PATH = "/var/lib/jenkins/.kube/config"
+        //KUBE_CONFIG_PATH = "/var/lib/jenkins/.kube/config"
     }
 
     stages {
@@ -197,32 +197,62 @@ spec:
                 container('kubectl') {
                     script {
                         sh '''
-                            echo "=== Verifying Minikube Access ==="
-                            #ls -la /var/lib/jenkins/.minikube/profiles/minikube/
-                            ls -la /var/lib/jenkins/.kube/
+                            # Verify mounted certificates
+                            echo "=== Certificate Verification ==="
+                            ls -la /host-minikube/profiles/minikube/client.*
+                            ls -la /host-minikube/ca.crt
                             
-                            echo "=== Setting Up kubectl ==="
-                            kubectl config set-cluster minikube \
-                              --server=https://$(minikube ip):8443 \
-                              --certificate-authority=/var/lib/jenkins/.minikube/ca.crt \
-                              --embed-certs=true
-                            kubectl config set-credentials minikube \
-                              --client-certificate=/var/lib/jenkins/.minikube/profiles/minikube/client.crt \
-                              --client-key=/var/lib/jenkins/.minikube/profiles/minikube/client.key \
-                              --embed-certs=true
-                            kubectl config set-context minikube \
-                              --cluster=minikube \
-                              --user=minikube
-                            kubectl config use-context minikube
+                            # Create kubeconfig directory (now in /tmp)
+                            mkdir -p /tmp/kubeconfig
                             
-                            echo "=== Current kubectl Configuration ==="
-                            kubectl config get-contexts
+                            # Get cluster endpoint (works for both minikube and standard clusters)
+                            APISERVER=$(kubectl config view -o jsonpath='{.clusters[0].cluster.server}')
+                            if [ -z "$APISERVER" ]; then
+                                echo "=== Using Minikube Default ==="
+                                APISERVER="https://$(kubectl get nodes -o jsonpath='{.items[0].status.addresses[?(@.type=="InternalIP")].address}'):8443"
+                                [ -z "$APISERVER" ] && APISERVER="https://127.0.0.1:8443"
+                            fi
+                            echo "Using API Server: $APISERVER"
+                            
+                            # Create kubeconfig
+                            cat > /tmp/kubeconfig/config <<EOF
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority: /host-minikube/ca.crt
+    server: ${APISERVER}
+  name: minikube
+contexts:
+- context:
+    cluster: minikube
+    user: minikube
+  name: minikube
+current-context: minikube
+kind: Config
+preferences: {}
+users:
+- name: minikube
+  user:
+    client-certificate: /host-minikube/profiles/minikube/client.crt
+    client-key: /host-minikube/profiles/minikube/client.key
+EOF
+
+                            # Verify configuration
+                            echo "=== kubeconfig Contents ==="
+                            cat /tmp/kubeconfig/config
+                            
+                            # Test connection
+                            echo "=== Testing Connection ==="
+                            export KUBECONFIG=/tmp/kubeconfig/config
+                            kubectl config view
                             kubectl cluster-info
                             
-                            echo "=== Deploying $DOCKER_IMAGE ==="
-                            kubectl set image deployment/spring-boot-app spring-boot-app=$DOCKER_IMAGE --record
+                            # Deployment
+                            echo "=== Deploying ${DOCKER_IMAGE} ==="
+                            kubectl set image deployment/spring-boot-app spring-boot-app=${DOCKER_IMAGE} --record
                             kubectl rollout status deployment/spring-boot-app --timeout=300s
                             
+                            # Verification
                             echo "=== Verification ==="
                             kubectl get deployments
                             kubectl get pods
