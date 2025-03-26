@@ -48,20 +48,20 @@ spec:
         cpu: "500m"
         memory: "512Mi"
   - name: kubectl
-    image: alpine/k8s:1.25.10  # Changed to more complete image
+    image: alpine/k8s:1.25.10
     command: ['sleep']
-    args: ['infinity']  # Keeps container running
+    args: ['infinity']
     workingDir: /var/lib/jenkins/workspace
     volumeMounts:
     - name: workspace-volume
       mountPath: /var/lib/jenkins/workspace
-    - name: jenkins-minikube   # changed volume name
+    - name: jenkins-minikube
       mountPath: /var/lib/jenkins/.minikube
     - name: kube-config
-      mountPath: /home/jenkins/.kube
+      mountPath: /var/lib/jenkins/.kube
     env:
     - name: KUBECONFIG
-      value: "/home/jenkins/.kube/config"
+      value: "/var/lib/jenkins/.kube/config"
   volumes:
   - name: workspace-volume
     hostPath:
@@ -71,17 +71,17 @@ spec:
       path: /var/run/docker.sock
   - name: kube-config
     hostPath:
-      path: /home/jenkins/.kube  # Changed to match your actual path
-  - name: jenkins-minikube  # Added volume for Minikube
+      path: /var/lib/jenkins/.kube
+  - name: jenkins-minikube
     hostPath:
-      path: /var/lib/jenkins/.minikube  # Changed to match your actual path
+      path: /var/lib/jenkins/.minikube
 """
         }
     }
 
     environment {
         DOCKER_IMAGE = "hatemnefzi/spring-boot-app:latest"
-        KUBE_CONFIG_PATH = "/home/jenkins/.kube/config"  
+        KUBE_CONFIG_PATH = "/var/lib/jenkins/.kube/config"
     }
 
     stages {
@@ -198,8 +198,22 @@ spec:
                     script {
                         sh '''
                             echo "=== Verifying Minikube Access ==="
-                            ls -la /home/jenkins/.minikube/profiles/minikube/
-                            ls -la /home/jenkins/.kube/
+                            ls -la /var/lib/jenkins/.minikube/profiles/minikube/
+                            ls -la /var/lib/jenkins/.kube/
+                            
+                            echo "=== Setting Up kubectl ==="
+                            kubectl config set-cluster minikube \
+                              --server=https://$(minikube ip):8443 \
+                              --certificate-authority=/var/lib/jenkins/.minikube/ca.crt \
+                              --embed-certs=true
+                            kubectl config set-credentials minikube \
+                              --client-certificate=/var/lib/jenkins/.minikube/profiles/minikube/client.crt \
+                              --client-key=/var/lib/jenkins/.minikube/profiles/minikube/client.key \
+                              --embed-certs=true
+                            kubectl config set-context minikube \
+                              --cluster=minikube \
+                              --user=minikube
+                            kubectl config use-context minikube
                             
                             echo "=== Current kubectl Configuration ==="
                             kubectl config get-contexts
