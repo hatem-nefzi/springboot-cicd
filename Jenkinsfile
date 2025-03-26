@@ -56,12 +56,12 @@ spec:
     - name: workspace-volume
       mountPath: /var/lib/jenkins/workspace
     - name: minikube-certs
-      mountPath: /host-minikube  # Changed from jenkins-minikube
+      mountPath: /host-minikube
     - name: kubeconfig-dir
-      mountPath: /tmp/kubeconfig # changed to /tmp which exists in container
+      mountPath: /tmp/kubeconfig
     env:
     - name: KUBECONFIG
-      value: "/tmp/kubeconfig/config" #instead of /var/lib/jenkins/.kube/config
+      value: "/tmp/kubeconfig/config"
   volumes:
   - name: workspace-volume
     hostPath:
@@ -74,14 +74,12 @@ spec:
       path: /var/lib/jenkins/.minikube
   - name: kubeconfig-dir
     emptyDir: {}
-    
 """
         }
     }
 
     environment {
         DOCKER_IMAGE = "hatemnefzi/spring-boot-app:latest"
-        //KUBE_CONFIG_PATH = "/var/lib/jenkins/.kube/config"
     }
 
     stages {
@@ -193,28 +191,28 @@ spec:
         }
 
         stage('Deploy') {
-    steps {
-        container('kubectl') {
-            script {
-                sh '''
-                    echo "=== Locating Minikube Certificates ==="
-                    # Search for certificates in mounted volume
-                    CERT_PATH=$(find /minikube-certs -name client.crt -printf '%h\n' 2>/dev/null | head -1)
-                    
-                    if [ -z "$CERT_PATH" ]; then
-                        echo "ERROR: Minikube certificates not found!"
-                        echo "Contents of /minikube-certs:"
-                        find /minikube-certs -type f
-                        exit 1
-                    fi
-                    
-                    echo "Found certificates at: $CERT_PATH"
-                    ls -la "$CERT_PATH"/client.*
-                    ls -la "$CERT_PATH"/../ca.crt
-                    
-                    echo "=== Creating kubeconfig ==="
-                    mkdir -p /tmp/kubeconfig
-                    cat > /tmp/kubeconfig/config <<EOF
+            steps {
+                container('kubectl') {
+                    script {
+                        sh '''
+                            echo "=== Locating Minikube Certificates ==="
+                            # Search for certificates in mounted volume
+                            CERT_PATH=$(find /host-minikube -name client.crt -printf '%h\n' 2>/dev/null | head -1)
+                            
+                            if [ -z "$CERT_PATH" ]; then
+                                echo "ERROR: Minikube certificates not found!"
+                                echo "Contents of /host-minikube:"
+                                find /host-minikube -type f
+                                exit 1
+                            fi
+                            
+                            echo "Found certificates at: $CERT_PATH"
+                            ls -la "$CERT_PATH"/client.*
+                            ls -la "$CERT_PATH"/../ca.crt
+                            
+                            echo "=== Creating kubeconfig ==="
+                            mkdir -p /tmp/kubeconfig
+                            cat > /tmp/kubeconfig/config <<EOF
 apiVersion: v1
 clusters:
 - cluster:
@@ -236,68 +234,68 @@ users:
     client-key: $CERT_PATH/client.key
 EOF
 
-                    echo "=== Verifying Configuration ==="
-                    export KUBECONFIG=/tmp/kubeconfig/config
-                    kubectl config view
-                    kubectl cluster-info
-                    
-                    echo "=== Deploying ${DOCKER_IMAGE} ==="
-                    kubectl set image deployment/spring-boot-app spring-boot-app=${DOCKER_IMAGE} --record
-                    kubectl rollout status deployment/spring-boot-app --timeout=300s
-                '''
+                            echo "=== Verifying Configuration ==="
+                            export KUBECONFIG=/tmp/kubeconfig/config
+                            kubectl config view
+                            kubectl cluster-info
+                            
+                            echo "=== Deploying ${DOCKER_IMAGE} ==="
+                            kubectl set image deployment/spring-boot-app spring-boot-app=${DOCKER_IMAGE} --record
+                            kubectl rollout status deployment/spring-boot-app --timeout=300s
+                            
+                            echo "=== Verification ==="
+                            kubectl get deployments
+                            kubectl get pods
+                        '''
+                    }
+                }
             }
         }
-    }
-}
-
     }
 
     post {
-    always {
-        container('maven') {
-            dir("${WORKSPACE}") {
-                sh '''
-                    echo "=== Starting Safe Cleanup ==="
-                    echo "Current disk usage:"
-                    df -h .
-                    
-                    # 1. Maven-specific cleanup (safe)
-                    if [ -f "pom.xml" ]; then
-                        echo "Cleaning Maven build artifacts..."
-                        # Cleans only current project's build files
-                        mvn clean
-                        # Cleans only dependencies downloaded for this project
-                        mvn dependency:purge-local-repository -DactTransitively=false -DreResolve=false
-                    fi
-                    
-                    # 2. Workspace cleanup (preserves Jenkins metadata)
-                    echo "Cleaning workspace..."
-                    find . \
-                        -mindepth 1 \
-                        -maxdepth 1 \
-                        \( \
-                           -name target \
-                           -o -name node_modules \
-                           -o -name build \
-                           -o -name out \
-                           -o -name dist \
-                           -o -name ".gradle" \
-                           -o -name ".idea" \
-                           -o -name "*.log" \
-                        \) -exec rm -rf {} +
-                    
-                    # 3. Docker cleanup (safe - only removes dangling artifacts)
-                    echo "Cleaning Docker..."
-                    docker image prune -f || true  # Only removes dangling images
-                    docker container prune -f || true  # Only stopped containers
-                    
-                    echo "Safe cleanup complete. Final disk usage:"
-                    df -h .
-                '''
-                
+        always {
+            container('maven') {
+                dir("${WORKSPACE}") {
+                    sh '''
+                        echo "=== Starting Safe Cleanup ==="
+                        echo "Current disk usage:"
+                        df -h .
+                        
+                        # 1. Maven-specific cleanup (safe)
+                        if [ -f "pom.xml" ]; then
+                            echo "Cleaning Maven build artifacts..."
+                            mvn clean
+                            mvn dependency:purge-local-repository -DactTransitively=false -DreResolve=false
+                        fi
+                        
+                        # 2. Workspace cleanup (preserves Jenkins metadata)
+                        echo "Cleaning workspace..."
+                        find . \
+                            -mindepth 1 \
+                            -maxdepth 1 \
+                            \( \
+                               -name target \
+                               -o -name node_modules \
+                               -o -name build \
+                               -o -name out \
+                               -o -name dist \
+                               -o -name ".gradle" \
+                               -o -name ".idea" \
+                               -o -name "*.log" \
+                            \) -exec rm -rf {} +
+                        
+                        # 3. Docker cleanup (safe - only removes dangling artifacts)
+                        echo "Cleaning Docker..."
+                        docker image prune -f || true
+                        docker container prune -f || true
+                        
+                        echo "Safe cleanup complete. Final disk usage:"
+                        df -h .
+                    '''
+                }
             }
         }
+        
     }
 }
-       
-    }
