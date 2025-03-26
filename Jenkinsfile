@@ -81,7 +81,7 @@ spec:
 
     environment {
         DOCKER_IMAGE = "hatemnefzi/spring-boot-app:latest"
-        KUBE_CONFIG_PATH = "/home/jenkins/.kube/config"  # Updated path
+        KUBE_CONFIG_PATH = "/home/jenkins/.kube/config"  
     }
 
     stages {
