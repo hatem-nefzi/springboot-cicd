@@ -212,7 +212,7 @@ spec:
                         echo "Client cert: ${CLIENT_CERT:-Not found}"
                         echo "CA cert: ${CA_CERT:-Not found}"
                         echo "Full directory tree:"
-                        find /host-minikube -type d -exec ls -la {} \; || true
+                        find /host-minikube -type d -exec ls -la {} \$; || true
                         exit 1
                     fi
                     
