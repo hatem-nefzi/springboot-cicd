@@ -49,7 +49,7 @@ spec:
         cpu: "500m"
         memory: "512Mi"
   - name: kubectl
-    image: bitnami/kubectl:latest
+    image: alpine/k8s:1.25.10  # Includes kubectl + shell
     command: ['sleep']
     args: ['3600']
     tty: true
@@ -222,11 +222,16 @@ stage('Deploy') {
     }
 
     post {
-        success {
-            slackSend channel: '#dev-team', message: 'Pipeline succeeded!'
-        }
-        failure {
-            slackSend channel: '#dev-team', message: 'Pipeline failed!'
+    always {
+        // Safe workspace cleanup - only affects current build
+        container('maven') {
+            sh '''
+                echo "Cleaning workspace..."
+                rm -rf ${WORKSPACE}/* 2>/dev/null || true
+                
+                echo "Cleaning Maven cache..."
+                mvn dependency:purge-local-repository -DactTransitively=false -DreResolve=false || true
+            '''
         }
     }
-}
+} 
