@@ -193,34 +193,33 @@ spec:
         }
 
         stage('Deploy') {
-            steps {
-                container('kubectl') {
-                    script {
-                        sh '''
-                            # Verify mounted certificates
-                            echo "=== Certificate Verification ==="
-                            ls -la /host-minikube/profiles/minikube/client.*
-                            ls -la /host-minikube/ca.crt
-                            
-                            # Create kubeconfig directory (now in /tmp)
-                            mkdir -p /tmp/kubeconfig
-                            
-                            # Get cluster endpoint (works for both minikube and standard clusters)
-                            APISERVER=$(kubectl config view -o jsonpath='{.clusters[0].cluster.server}')
-                            if [ -z "$APISERVER" ]; then
-                                echo "=== Using Minikube Default ==="
-                                APISERVER="https://$(kubectl get nodes -o jsonpath='{.items[0].status.addresses[?(@.type=="InternalIP")].address}'):8443"
-                                [ -z "$APISERVER" ] && APISERVER="https://127.0.0.1:8443"
-                            fi
-                            echo "Using API Server: $APISERVER"
-                            
-                            # Create kubeconfig
-                            cat > /tmp/kubeconfig/config <<EOF
+    steps {
+        container('kubectl') {
+            script {
+                sh '''
+                    echo "=== Locating Minikube Certificates ==="
+                    # Search for certificates in mounted volume
+                    CERT_PATH=$(find /minikube-certs -name client.crt -printf '%h\n' 2>/dev/null | head -1)
+                    
+                    if [ -z "$CERT_PATH" ]; then
+                        echo "ERROR: Minikube certificates not found!"
+                        echo "Contents of /minikube-certs:"
+                        find /minikube-certs -type f
+                        exit 1
+                    fi
+                    
+                    echo "Found certificates at: $CERT_PATH"
+                    ls -la "$CERT_PATH"/client.*
+                    ls -la "$CERT_PATH"/../ca.crt
+                    
+                    echo "=== Creating kubeconfig ==="
+                    mkdir -p /tmp/kubeconfig
+                    cat > /tmp/kubeconfig/config <<EOF
 apiVersion: v1
 clusters:
 - cluster:
-    certificate-authority: /host-minikube/ca.crt
-    server: ${APISERVER}
+    certificate-authority: $CERT_PATH/../ca.crt
+    server: https://$(kubectl get nodes -o jsonpath='{.items[0].status.addresses[?(@.type=="InternalIP")].address}'):8443
   name: minikube
 contexts:
 - context:
@@ -233,59 +232,72 @@ preferences: {}
 users:
 - name: minikube
   user:
-    client-certificate: /host-minikube/profiles/minikube/client.crt
-    client-key: /host-minikube/profiles/minikube/client.key
+    client-certificate: $CERT_PATH/client.crt
+    client-key: $CERT_PATH/client.key
 EOF
 
-                            # Verify configuration
-                            echo "=== kubeconfig Contents ==="
-                            cat /tmp/kubeconfig/config
-                            
-                            # Test connection
-                            echo "=== Testing Connection ==="
-                            export KUBECONFIG=/tmp/kubeconfig/config
-                            kubectl config view
-                            kubectl cluster-info
-                            
-                            # Deployment
-                            echo "=== Deploying ${DOCKER_IMAGE} ==="
-                            kubectl set image deployment/spring-boot-app spring-boot-app=${DOCKER_IMAGE} --record
-                            kubectl rollout status deployment/spring-boot-app --timeout=300s
-                            
-                            # Verification
-                            echo "=== Verification ==="
-                            kubectl get deployments
-                            kubectl get pods
-                        '''
-                    }
-                }
+                    echo "=== Verifying Configuration ==="
+                    export KUBECONFIG=/tmp/kubeconfig/config
+                    kubectl config view
+                    kubectl cluster-info
+                    
+                    echo "=== Deploying ${DOCKER_IMAGE} ==="
+                    kubectl set image deployment/spring-boot-app spring-boot-app=${DOCKER_IMAGE} --record
+                    kubectl rollout status deployment/spring-boot-app --timeout=300s
+                '''
             }
-        }
-    }
-
-    post {
-        always {
-            container('maven') {
-                dir("${WORKSPACE}") {
-                    sh '''
-                        # Only run if pom.xml exists
-                        if [ -f "pom.xml" ]; then
-                            mvn dependency:purge-local-repository -DactTransitively=false -DreResolve=false
-                        else
-                            echo "No pom.xml found - skipping Maven cleanup"
-                        fi
-                        
-                        # General workspace cleanup
-                        find . -mindepth 1 -maxdepth 1 ! -name 'workspace' -exec rm -rf {} +
-                    '''
-                }
-            }
-        }
-        success {
-            slackSend channel: '#dev-team', message: 'Pipeline succeeded!'
-        }
-        failure {
-            slackSend channel: '#dev-team', message: 'Pipeline failed!'
         }
     }
 }
+
+    }
+
+    post {
+    always {
+        container('maven') {
+            dir("${WORKSPACE}") {
+                sh '''
+                    echo "=== Starting Safe Cleanup ==="
+                    echo "Current disk usage:"
+                    df -h .
+                    
+                    # 1. Maven-specific cleanup (safe)
+                    if [ -f "pom.xml" ]; then
+                        echo "Cleaning Maven build artifacts..."
+                        # Cleans only current project's build files
+                        mvn clean
+                        # Cleans only dependencies downloaded for this project
+                        mvn dependency:purge-local-repository -DactTransitively=false -DreResolve=false
+                    fi
+                    
+                    # 2. Workspace cleanup (preserves Jenkins metadata)
+                    echo "Cleaning workspace..."
+                    find . \
+                        -mindepth 1 \
+                        -maxdepth 1 \
+                        \( \
+                           -name target \
+                           -o -name node_modules \
+                           -o -name build \
+                           -o -name out \
+                           -o -name dist \
+                           -o -name ".gradle" \
+                           -o -name ".idea" \
+                           -o -name "*.log" \
+                        \) -exec rm -rf {} +
+                    
+                    # 3. Docker cleanup (safe - only removes dangling artifacts)
+                    echo "Cleaning Docker..."
+                    docker image prune -f || true  # Only removes dangling images
+                    docker container prune -f || true  # Only stopped containers
+                    
+                    echo "Safe cleanup complete. Final disk usage:"
+                    df -h .
+                '''
+                
+            }
+        }
+    }
+}
+       
+    }
