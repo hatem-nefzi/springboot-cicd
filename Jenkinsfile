@@ -198,7 +198,7 @@ spec:
                     script {
                         sh '''
                             echo "=== Verifying Minikube Access ==="
-                            ls -la /var/lib/jenkins/.minikube/profiles/minikube/
+                            #ls -la /var/lib/jenkins/.minikube/profiles/minikube/
                             ls -la /var/lib/jenkins/.kube/
                             
                             echo "=== Setting Up kubectl ==="
