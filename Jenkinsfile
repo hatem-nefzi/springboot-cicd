@@ -194,66 +194,15 @@ spec:
         stage('Deploy') {
     steps {
         container('kubectl') {
-            script {
+            withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG_FILE')]) {
                 sh '''
-                    echo "=== Verifying Minikube Mount ==="
-                    echo "Contents of /host-minikube:"
-                    ls -la /host-minikube || true
-                    echo "Mount details:"
-                    mount | grep minikube || true
+                    # Use the provided kubeconfig directly
+                    kubectl --kubeconfig=${KUBECONFIG_FILE} \
+                        set image deployment/spring-boot-app \
+                        spring-boot-app=${DOCKER_IMAGE} --record
                     
-                    echo "=== Searching for Certificates ==="
-                    # Search recursively for certificates
-                    CLIENT_CERT=$(find /host-minikube -name client.crt | head -1)
-                    CA_CERT=$(find /host-minikube -name ca.crt | head -1)
-                    
-                    if [ -z "$CLIENT_CERT" ] || [ -z "$CA_CERT" ]; then
-                        echo "ERROR: Required certificates not found!"
-                        echo "Client cert: ${CLIENT_CERT:-Not found}"
-                        echo "CA cert: ${CA_CERT:-Not found}"
-                        echo "Full directory tree:"
-                        find /host-minikube -type d -exec ls -la {} \$; || true
-                        exit 1
-                    fi
-                    
-                    CERT_DIR=$(dirname "$CLIENT_CERT")
-                    echo "Using certificates from: $CERT_DIR"
-                    ls -la "$CERT_DIR"/client.*
-                    ls -la "$(dirname "$CA_CERT")"/ca.crt
-                    
-                    echo "=== Creating kubeconfig ==="
-                    mkdir -p /tmp/kubeconfig
-                    cat > /tmp/kubeconfig/config <<EOF
-apiVersion: v1
-clusters:
-- cluster:
-    certificate-authority: $CA_CERT
-    server: https://$(kubectl get nodes -o jsonpath='{.items[0].status.addresses[?(@.type=="InternalIP")].address}'):8443
-  name: minikube
-contexts:
-- context:
-    cluster: minikube
-    user: minikube
-  name: minikube
-current-context: minikube
-kind: Config
-preferences: {}
-users:
-- name: minikube
-  user:
-    client-certificate: $CLIENT_CERT
-    client-key: ${CLIENT_CERT%.*}.key
-EOF
-
-                    echo "=== Testing Connection ==="
-                    export KUBECONFIG=/tmp/kubeconfig/config
-                    kubectl config view
-                    kubectl cluster-info
-                    kubectl get nodes
-                    
-                    echo "=== Deploying ${DOCKER_IMAGE} ==="
-                    kubectl set image deployment/spring-boot-app spring-boot-app=${DOCKER_IMAGE} --record
-                    kubectl rollout status deployment/spring-boot-app --timeout=300s
+                    kubectl --kubeconfig=${KUBECONFIG_FILE} \
+                        rollout status deployment/spring-boot-app --timeout=300s
                 '''
             }
         }
