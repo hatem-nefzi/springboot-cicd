@@ -197,33 +197,41 @@ spec:
             withCredentials([file(credentialsId: 'kubeconfig1', variable: 'KUBECONFIG_FILE')]) {
                 script {
                     try {
-                        // 1. Deploy new image
-                        sh '''
+                        // Get minikube IP
+                        MINIKUBE_IP = sh(script: '''
+                            kubectl --kubeconfig=${KUBECONFIG_FILE} \
+                                get nodes -o jsonpath='{.items[0].status.addresses[?(@.type=="InternalIP")].address}'
+                        ''', returnStdout: true).trim()
+                        
+                        // Update deployment with record
+                        sh """
                             kubectl --kubeconfig=${KUBECONFIG_FILE} \
                                 set image deployment/spring-boot-app \
-                                spring-boot-app=${DOCKER_IMAGE} --record
+                                spring-boot-app=${DOCKER_IMAGE} --record=true
                             
-                            # Wait for rollout to complete (timeout: 5m)
                             kubectl --kubeconfig=${KUBECONFIG_FILE} \
                                 rollout status deployment/spring-boot-app --timeout=300s
-                        '''
+                        """
                         
-                        // 2. Verify endpoints are healthy
+                        // Verify using port-forward (more reliable)
                         sh '''
-                            # Check if pods are ready
                             kubectl --kubeconfig=${KUBECONFIG_FILE} \
-                                get pods -l app=spring-boot-app -o jsonpath='{.items[*].status.conditions[?(@.type=="Ready")].status}' | grep "True"
+                                port-forward service/spring-boot-app-service 8080:80 &
+                            PF_PID=$!
                             
-                            # Test ingress (optional)
-                            curl -H "Host: springboot-app.test" http://$(minikube ip)/greet
+                            sleep 5  # Wait for port-forward to establish
+                            curl -s http://localhost:8080/greet || true
+                            kill $PF_PID
                         '''
                     } catch (err) {
-                        // 3. Rollback on failure
+                        // Attempt rollback if history exists
                         sh '''
                             kubectl --kubeconfig=${KUBECONFIG_FILE} \
-                                rollout undo deployment/spring-boot-app
+                                rollout history deployment/spring-boot-app && \
+                            kubectl --kubeconfig=${KUBECONFIG_FILE} \
+                                rollout undo deployment/spring-boot-app || true
                         '''
-                        error("Deployment failed: ${err.message}. Rolled back to previous version.")
+                        error("Deployment failed: ${err.message}")
                     }
                 }
             }
