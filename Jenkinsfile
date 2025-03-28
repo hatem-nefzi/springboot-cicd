@@ -210,34 +210,43 @@ spec:
 }
     }
     post {
-        always {
-            container('maven') {
-                dir("${WORKSPACE}") {
-                    sh '''
-                        echo "=== Starting Safe Cleanup ==="
-                        echo "Current disk usage:"
-                        df -h .
-                        
-                        # 1. Maven-specific cleanup (safe)
-                        if [ -f "pom.xml" ]; then
-                            echo "Cleaning Maven build artifacts..."
-                            mvn clean
-                            mvn dependency:purge-local-repository -DactTransitively=false -DreResolve=false
-                        fi
-                        
-                        
-                        
-                        # 3. Docker cleanup (safe - only removes dangling artifacts)
-                        echo "Cleaning Docker..."
-                        docker image prune -f || true
-                        docker container prune -f || true
-                        
-                        echo "Safe cleanup complete. Final disk usage:"
-                        df -h .
-                    '''
-                }
+    always {
+        container('maven') {
+            dir("${WORKSPACE}") {
+                sh '''
+                    echo "=== Starting Advanced Cleanup ==="
+                    echo "Initial disk usage:"
+                    df -h .
+
+                    # Maven Cleanup: Removes old dependencies, keeping only useful caches
+                    echo "Cleaning Maven build artifacts..."
+                    mvn clean
+                    rm -rf ~/.m2/repository/org/apache/maven/plugins
+                    rm -rf ~/.m2/repository/org/apache/maven/shared
+                    rm -rf ~/.m2/repository/com/sun
+                    rm -rf ~/.m2/repository/org/codehaus
+                    find ~/.m2/repository -type f -name "*lastUpdated" -delete
+
+                    # Node Cleanup (Playwright & other cached data)
+                    echo "Cleaning Node.js cache..."
+                    rm -rf ~/.npm/_cacache/*
+                    rm -rf ~/.cache/ms-playwright
+
+                    # Docker Cleanup: Remove old images/containers while keeping actively used ones
+                    echo "Cleaning Docker..."
+                    docker system prune -af --volumes || true
+                    docker images --format '{{.Repository}}:{{.Tag}}' | grep '<none>' | xargs -r docker rmi || true
+                    docker container prune -f || true
+
+                    # Check final disk usage
+                    echo "Final disk usage after cleanup:"
+                    df -h .
+                    
+                    echo "=== Cleanup Completed Successfully ==="
+                '''
             }
         }
-        
     }
+}
+
 }
