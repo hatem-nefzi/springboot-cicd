@@ -194,7 +194,7 @@ spec:
         stage('Deploy') {
     steps {
         container('kubectl') {
-            withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG_FILE')]) {
+            withCredentials([file(credentialsId: 'kubeconfig1', variable: 'KUBECONFIG_FILE')]) {
                 sh '''
                     # Use the provided kubeconfig directly
                     kubectl --kubeconfig=${KUBECONFIG_FILE} \
