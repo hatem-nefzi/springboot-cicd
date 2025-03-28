@@ -195,15 +195,37 @@ spec:
     steps {
         container('kubectl') {
             withCredentials([file(credentialsId: 'kubeconfig1', variable: 'KUBECONFIG_FILE')]) {
-                sh '''
-                    # Use the provided kubeconfig directly
-                    kubectl --kubeconfig=${KUBECONFIG_FILE} \
-                        set image deployment/spring-boot-app \
-                        spring-boot-app=${DOCKER_IMAGE} --record
-                    
-                    kubectl --kubeconfig=${KUBECONFIG_FILE} \
-                        rollout status deployment/spring-boot-app --timeout=300s
-                '''
+                script {
+                    try {
+                        // 1. Deploy new image
+                        sh '''
+                            kubectl --kubeconfig=${KUBECONFIG_FILE} \
+                                set image deployment/spring-boot-app \
+                                spring-boot-app=${DOCKER_IMAGE} --record
+                            
+                            # Wait for rollout to complete (timeout: 5m)
+                            kubectl --kubeconfig=${KUBECONFIG_FILE} \
+                                rollout status deployment/spring-boot-app --timeout=300s
+                        '''
+                        
+                        // 2. Verify endpoints are healthy
+                        sh '''
+                            # Check if pods are ready
+                            kubectl --kubeconfig=${KUBECONFIG_FILE} \
+                                get pods -l app=spring-boot-app -o jsonpath='{.items[*].status.conditions[?(@.type=="Ready")].status}' | grep "True"
+                            
+                            # Test ingress (optional)
+                            curl -H "Host: springboot-app.test" http://$(minikube ip)/greet
+                        '''
+                    } catch (err) {
+                        // 3. Rollback on failure
+                        sh '''
+                            kubectl --kubeconfig=${KUBECONFIG_FILE} \
+                                rollout undo deployment/spring-boot-app
+                        '''
+                        error("Deployment failed: ${err.message}. Rolled back to previous version.")
+                    }
+                }
             }
         }
     }
