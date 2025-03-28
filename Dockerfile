@@ -14,28 +14,23 @@
 # Stage 1: Build the application
 FROM docker.io/eclipse-temurin:17-jdk-alpine AS builder
 WORKDIR /app
-
-# Copy only the files needed for the build
 COPY pom.xml .
 COPY src ./src
 COPY mvnw .
 COPY .mvn/ .mvn/
-
-# Make mvnw executable
 RUN chmod +x mvnw
-
-# Build the application
 RUN ./mvnw clean package -DskipTests
 
-# Stage 2: Create a lightweight runtime image
+# Stage 2: Runtime image
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 
-# Copy only the built JAR file from the builder stage
+# Create config directory and copy both property files
+RUN mkdir -p /config
 COPY --from=builder /app/target/demo-0.0.1-SNAPSHOT.jar app.jar
+COPY src/main/resources/application.properties /config/
+COPY src/main/resources/application-k8s.properties /config/
 
-# Expose the application port
+# Default to port 8081, override with K8s profile
 EXPOSE 8081
-
-# Run the application
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar", "--spring.config.location=classpath:/,file:/config/"]

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-boot-app-service
+spec:
+  type: NodePort  # Exposes on <NodeIP>:<RandomPort>
+  selector:
+    app: spring-boot-app  # Matches your deployment's labels
+  ports:
+    - protocol: TCP
+      port: 80           # Service port
+      targetPort: 8080   # Container port (your app's port)

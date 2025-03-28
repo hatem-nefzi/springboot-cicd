@@ -16,4 +16,26 @@ spec:
       - name: spring-boot-app
         image: hatemnefzi/spring-boot-app:latest
         ports:
-        - containerPort: 8081
+        - containerPort: 8080
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: "k8s"
+        # Add these critical probes:
+        livenessProbe:
+          httpGet:
+            path: /actuator/health/liveness
+            port: 8080
+          initialDelaySeconds: 200  # Give enough startup time
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /actuator/health/readiness
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 5
+        # Add resource limits
+        resources:
+          requests:
+            memory: "512Mi"
+          limits:
+            memory: "1Gi"
