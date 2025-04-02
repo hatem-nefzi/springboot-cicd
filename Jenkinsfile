@@ -192,33 +192,41 @@ spec:
             }
         }
 
-        stage('Deploy') {
+        stage('Verify Endpoints') {
     steps {
         container('kubectl') {
-            withCredentials([file(credentialsId: 'kubeconfig1', variable: 'KUBECONFIG_FILE')]) {
-                sh '''
-                    # Ensure KUBECONFIG file exists
-                    if [ ! -f "$KUBECONFIG_FILE" ]; then
-                        echo "ERROR: Kubeconfig file not found at $KUBECONFIG_FILE"
-                        exit 1
-                    fi
-
-                    echo "Using KUBECONFIG at: $KUBECONFIG_FILE"
-
-                    # Update deployment image
-                    kubectl --kubeconfig=$KUBECONFIG_FILE \
-                        set image deployment/spring-boot-app \
-                        spring-boot-app=$DOCKER_IMAGE
+            script {
+                // Get NodePort (no minikube ip needed)
+                def NODE_PORT = sh(
+                    script: "kubectl get svc spring-boot-app-service -o jsonpath='{.spec.ports[0].nodePort}'",
+                    returnStdout: true
+                ).trim()
+                
+                // Use Kubernetes internal DNS
+                def SERVICE_URL = "spring-boot-app-service.default.svc.cluster.local:${NODE_PORT}"
+                
+                def endpoints = ['/hello', '/time', '/greet', '/status']
+                endpoints.each { endpoint ->
+                    def httpCode = sh(
+                        script: "curl -s -o /dev/null -w '%{http_code}' http://${SERVICE_URL}${endpoint}",
+                        returnStdout: true
+                    ).trim()
                     
-                    # Wait for rollout to complete
-                    kubectl --kubeconfig=$KUBECONFIG_FILE \
-                        rollout status deployment/spring-boot-app --timeout=300s
-                    
-                    # Verify pods are ready
-                    kubectl --kubeconfig=$KUBECONFIG_FILE \
-                        wait --for=condition=ready pod \
-                        -l app=spring-boot-app --timeout=120s
-                '''
+                    if (httpCode != "200") {
+                        error("Endpoint ${endpoint} failed with HTTP ${httpCode}")
+                    } else {
+                        echo "Verified ${endpoint} (HTTP ${httpCode})"
+                    }
+                }
+                
+                // Optional: Test through Ingress if needed
+                def INGRESS_HOST = "springboot-app.test"
+                endpoints.each { endpoint ->
+                    sh """
+                        echo "Testing external access via ingress..."
+                        curl -v http://${INGRESS_HOST}${endpoint}
+                    """
+                }
             }
         }
     }
