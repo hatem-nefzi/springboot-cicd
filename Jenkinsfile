@@ -192,6 +192,37 @@ spec:
             }
         }
 
+        stage('Deploy') {
+    steps {
+        container('kubectl') {
+            withCredentials([file(credentialsId: 'kubeconfig1', variable: 'KUBECONFIG_FILE')]) {
+                sh '''
+                    # Ensure KUBECONFIG file exists
+                    if [ ! -f "$KUBECONFIG_FILE" ]; then
+                        echo "ERROR: Kubeconfig file not found at $KUBECONFIG_FILE"
+                        exit 1
+                    fi
+
+                    echo "Using KUBECONFIG at: $KUBECONFIG_FILE"
+
+                    # Update deployment image
+                    kubectl --kubeconfig=$KUBECONFIG_FILE \
+                        set image deployment/spring-boot-app \
+                        spring-boot-app=$DOCKER_IMAGE
+                    
+                    # Wait for rollout to complete
+                    kubectl --kubeconfig=$KUBECONFIG_FILE \
+                        rollout status deployment/spring-boot-app --timeout=300s
+                    
+                    # Verify pods are ready
+                    kubectl --kubeconfig=$KUBECONFIG_FILE \
+                        wait --for=condition=ready pod \
+                        -l app=spring-boot-app --timeout=120s
+                '''
+            }
+        }
+    }
+}
         stage('Verify Endpoints') {
     steps {
         container('kubectl') {
@@ -220,69 +251,6 @@ spec:
                 }
                 
                 // Optional: Test through Ingress if needed
-                def INGRESS_HOST = "springboot-app.test"
-                endpoints.each { endpoint ->
-                    sh """
-                        echo "Testing external access via ingress..."
-                        curl -v http://${INGRESS_HOST}${endpoint}
-                    """
-                }
-            }
-        }
-    }
-}
-        stage('Verify Endpoints') {
-    steps {
-        container('kubectl') {
-            script {
-                // 1. Wait for the pod to be fully ready
-                sh "kubectl wait --for=condition=ready pod -l app=spring-boot-app --timeout=120s"
-                
-                // 2. Get the pod name
-                def POD_NAME = sh(
-                    script: "kubectl get pods -l app=spring-boot-app -o jsonpath='{.items[0].metadata.name}'",
-                    returnStdout: true
-                ).trim()
-                
-                // 3. Test endpoints using alternative methods
-                def endpoints = ['/hello', '/time', '/greet', '/status']
-                
-                endpoints.each { endpoint ->
-                    // Method 1: Try wget if available (with proper escaping)
-                    def httpCode = sh(
-                        script: """
-                            kubectl exec ${POD_NAME} -- sh -c ' \
-                                if command -v wget >/dev/null; then \
-                                    wget -qO- --server-response http://localhost:8080${endpoint} 2>&1 | \
-                                    awk \'/HTTP\\\\//{print \\\$2}\'; \
-                                else \
-                                    echo "500"; \
-                                fi \
-                            ' || echo "500"
-                        """,
-                        returnStdout: true
-                    ).trim()
-                    
-                    // Method 2: Fallback to NodePort test
-                    if (httpCode == "500" || httpCode == "") {
-                        def NODE_PORT = sh(
-                            script: "kubectl get svc spring-boot-app-service -o jsonpath='{.spec.ports[0].nodePort}'",
-                            returnStdout: true
-                        ).trim()
-                        httpCode = sh(
-                            script: "curl -s -o /dev/null -w '%{http_code}' http://\$(minikube ip):${NODE_PORT}${endpoint}",
-                            returnStdout: true
-                        ).trim()
-                    }
-                    
-                    if (httpCode != "200") {
-                        error("Endpoint ${endpoint} failed with HTTP ${httpCode}")
-                    } else {
-                        echo "Successfully verified ${endpoint} (HTTP ${httpCode})"
-                    }
-                }
-                
-                // 4. Verify through Ingress (external access)
                 def INGRESS_HOST = "springboot-app.test"
                 endpoints.each { endpoint ->
                     sh """
