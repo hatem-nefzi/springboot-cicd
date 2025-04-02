@@ -106,6 +106,27 @@ spec:
             }
         }
 
+        stage('Unit Tests') {
+            steps {
+                container('maven') {
+                    sh 'mvn test'  // Runs only UnitTests.java
+            }
+            }
+        }
+
+        stage('Integration Tests') {
+            steps {
+                container('maven') {
+                    sh 'mvn verify -DskipTests'  // Runs only ApiTests.java
+            }
+            }
+            post {
+            always {
+                junit 'target/failsafe-reports/**/*.xml'
+            }
+            }
+        }
+
         stage('Run Gatling Tests') {
             steps {
                 container('maven') {
