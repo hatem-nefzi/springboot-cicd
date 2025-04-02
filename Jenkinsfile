@@ -155,7 +155,8 @@ spec:
                 container('maven') {
                     sh '''
                         docker buildx create --use
-                        docker buildx build -t $DOCKER_IMAGE --load .
+                        docker buildx build --pull --no-cache -t $DOCKER_IMAGE --load .
+                        docker buildx prune -af
                     '''
                 }
             }
