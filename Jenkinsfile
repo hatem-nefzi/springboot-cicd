@@ -195,25 +195,34 @@ spec:
     steps {
         container('kubectl') {
             withCredentials([file(credentialsId: 'kubeconfig1', variable: 'KUBECONFIG_FILE')]) {
-                sh """
+                sh '''
+                    # Ensure KUBECONFIG file exists
+                    if [ ! -f "$KUBECONFIG_FILE" ]; then
+                        echo "ERROR: Kubeconfig file not found at $KUBECONFIG_FILE"
+                        exit 1
+                    fi
+
+                    echo "Using KUBECONFIG at: $KUBECONFIG_FILE"
+
                     # Update deployment image
-                    kubectl --kubeconfig=${KUBECONFIG_FILE} \
+                    kubectl --kubeconfig=$KUBECONFIG_FILE \
                         set image deployment/spring-boot-app \
-                        spring-boot-app=${DOCKER_IMAGE} --record
+                        spring-boot-app=$DOCKER_IMAGE
                     
                     # Wait for rollout to complete
-                    kubectl --kubeconfig=${KUBECONFIG_FILE} \
+                    kubectl --kubeconfig=$KUBECONFIG_FILE \
                         rollout status deployment/spring-boot-app --timeout=300s
                     
                     # Verify pods are ready
-                    kubectl --kubeconfig=${KUBECONFIG_FILE} \
+                    kubectl --kubeconfig=$KUBECONFIG_FILE \
                         wait --for=condition=ready pod \
                         -l app=spring-boot-app --timeout=120s
-                """
+                '''
             }
         }
     }
 }
+
     }
     post {
     always {
