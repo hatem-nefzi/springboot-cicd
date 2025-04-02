@@ -223,25 +223,37 @@ spec:
         }
     }
 }
-        stage('Verify Connectivity') {
+        stage('Verify Endpoints') {
     steps {
         container('kubectl') {
             script {
-                // 1. Verify service exists
-                sh 'kubectl get svc spring-boot-app-service'
-                
-                // 2. Check endpoints
-                sh 'kubectl get endpoints spring-boot-app-service'
-                
-                // 3. Test with shorter timeout (5 seconds)
-                def NODE_PORT = sh(script: "kubectl get svc spring-boot-app-service -o jsonpath='{.spec.ports[0].nodePort}'", returnStdout: true).trim()
-                def httpCode = sh(script: """
-                    curl -s -o /dev/null -w '%{http_code}' \
-                    --max-time 5 \
-                    http://spring-boot-app-service.default.svc.cluster.local:${NODE_PORT}/hello
+                // Method 1: Use ClusterIP directly (most reliable)
+                def CLUSTER_IP = sh(script: """
+                    kubectl get svc spring-boot-app-service \
+                    -o jsonpath='{.spec.clusterIP}'
                 """, returnStdout: true).trim()
                 
-                echo "HTTP Status: ${httpCode}"
+                def endpoints = ['/hello', '/status']
+                endpoints.each { endpoint ->
+                    def httpCode = sh(script: """
+                        curl -s -o /dev/null -w '%{http_code}' \
+                        --max-time 5 \
+                        http://${CLUSTER_IP}${endpoint}
+                    """, returnStdout: true).trim()
+                    
+                    if (httpCode != "200") {
+                        error("${endpoint} failed with HTTP ${httpCode}")
+                    } else {
+                        echo "Verified ${endpoint} (HTTP 200)"
+                    }
+                }
+                
+                // Method 2: Alternative using Service DNS (if needed)
+                def SERVICE_DNS = "spring-boot-app-service.default.svc.cluster.local"
+                sh """
+                    echo "Testing via Service DNS..."
+                    curl -v http://${SERVICE_DNS}/hello
+                """
             }
         }
     }
