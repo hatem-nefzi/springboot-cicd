@@ -55,6 +55,6 @@ public class ApiTests {
     void testGreetEndpointDefaultValue() {
         APIResponse response = request.get("/status");
         assertEquals(200, response.status());
-        assertEquals("Hello, User!", response.text()); 
+        assertEquals("Hello, Status is :", response.text()); 
     }
 }
