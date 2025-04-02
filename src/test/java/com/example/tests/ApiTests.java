@@ -51,4 +51,10 @@ public class ApiTests {
         assertEquals(200, response.status());
         assertEquals("Hello, User!", response.text()); // Default name should be "User"
     }
+    @Test
+    void testGreetEndpointDefaultValue() {
+        APIResponse response = request.get("/status");
+        assertEquals(200, response.status());
+        assertEquals("Hello, User!", response.text()); 
+    }
 }

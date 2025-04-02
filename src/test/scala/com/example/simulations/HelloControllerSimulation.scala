@@ -28,6 +28,12 @@ class HelloControllerSimulation extends Simulation {
         .get("/greet?name=Gatling")
         .check(status.is(200))
     )
+    .pause(1.second)
+    .exec(
+      http("Get Status")
+        .get("/status")
+        .check(status.is(200))
+    )
 
   setUp(
     scn.inject(
