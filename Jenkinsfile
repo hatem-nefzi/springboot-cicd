@@ -223,6 +223,55 @@ spec:
         }
     }
 }
+        stage('Verify Endpoints') {
+    steps {
+        container('kubectl') {
+            script {
+                // 1. Wait for the pod to be fully ready
+                sh "kubectl wait --for=condition=ready pod -l app=spring-boot-app --timeout=120s"
+                
+                // 2. Get the pod name
+                def POD_NAME = sh(
+                    script: "kubectl get pods -l app=spring-boot-app -o jsonpath='{.items[0].metadata.name}'",
+                    returnStdout: true
+                ).trim()
+                
+                // 3. Test endpoints INSIDE the pod (using port 8081)
+                def endpoints = ['/hello', '/time', '/greet', '/status']
+                
+                endpoints.each { endpoint ->
+                    // Method 1: Exec into the pod and curl locally
+                    def response = sh(
+                        script: "kubectl exec $POD_NAME -- curl -s -o /dev/null -w '%{http_code}' http://localhost:8081${endpoint}",
+                        returnStdout: true
+                    ).trim()
+                    
+                    if (response != "200") {
+                        error("Endpoint ${endpoint} failed with HTTP ${response}")
+                    } else {
+                        echo "Successfully verified ${endpoint} (HTTP ${response})"
+                    }
+                    
+                    // Method 2: Get full response for debugging
+                    def fullResponse = sh(
+                        script: "kubectl exec $POD_NAME -- curl -s http://localhost:8081${endpoint}",
+                        returnStdout: true
+                    )
+                    echo "Response from ${endpoint}: ${fullResponse}"
+                }
+                
+                // 4. Verify through Ingress (external access)
+                def INGRESS_HOST = "springboot-app.test"
+                endpoints.each { endpoint ->
+                    sh """
+                        echo "Testing external access via ingress..."
+                        curl -v http://${INGRESS_HOST}${endpoint}
+                    """
+                }
+            }
+        }
+    }
+}
 
     }
     post {
