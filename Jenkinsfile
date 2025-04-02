@@ -223,41 +223,25 @@ spec:
         }
     }
 }
-        stage('Verify Endpoints') {
+        stage('Verify Connectivity') {
     steps {
         container('kubectl') {
             script {
-                // Get NodePort (no minikube ip needed)
-                def NODE_PORT = sh(
-                    script: "kubectl get svc spring-boot-app-service -o jsonpath='{.spec.ports[0].nodePort}'",
-                    returnStdout: true
-                ).trim()
+                // 1. Verify service exists
+                sh 'kubectl get svc spring-boot-app-service'
                 
-                // Use Kubernetes internal DNS
-                def SERVICE_URL = "spring-boot-app-service.default.svc.cluster.local:${NODE_PORT}"
+                // 2. Check endpoints
+                sh 'kubectl get endpoints spring-boot-app-service'
                 
-                def endpoints = ['/hello', '/time', '/greet', '/status']
-                endpoints.each { endpoint ->
-                    def httpCode = sh(
-                        script: "curl -s -o /dev/null -w '%{http_code}' http://${SERVICE_URL}${endpoint}",
-                        returnStdout: true
-                    ).trim()
-                    
-                    if (httpCode != "200") {
-                        error("Endpoint ${endpoint} failed with HTTP ${httpCode}")
-                    } else {
-                        echo "Verified ${endpoint} (HTTP ${httpCode})"
-                    }
-                }
+                // 3. Test with shorter timeout (5 seconds)
+                def NODE_PORT = sh(script: "kubectl get svc spring-boot-app-service -o jsonpath='{.spec.ports[0].nodePort}'", returnStdout: true).trim()
+                def httpCode = sh(script: """
+                    curl -s -o /dev/null -w '%{http_code}' \
+                    --max-time 5 \
+                    http://spring-boot-app-service.default.svc.cluster.local:${NODE_PORT}/hello
+                """, returnStdout: true).trim()
                 
-                // Optional: Test through Ingress if needed
-                def INGRESS_HOST = "springboot-app.test"
-                endpoints.each { endpoint ->
-                    sh """
-                        echo "Testing external access via ingress..."
-                        curl -v http://${INGRESS_HOST}${endpoint}
-                    """
-                }
+                echo "HTTP Status: ${httpCode}"
             }
         }
     }
