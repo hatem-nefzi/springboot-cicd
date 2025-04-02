@@ -240,13 +240,13 @@ spec:
                 def endpoints = ['/hello', '/time', '/greet', '/status']
                 
                 endpoints.each { endpoint ->
-                    // Method 1: Try wget if available
+                    // Method 1: Try wget if available (with proper escaping)
                     def httpCode = sh(
                         script: """
-                            kubectl exec $POD_NAME -- sh -c ' \
+                            kubectl exec ${POD_NAME} -- sh -c ' \
                                 if command -v wget >/dev/null; then \
                                     wget -qO- --server-response http://localhost:8080${endpoint} 2>&1 | \
-                                    awk "/HTTP\\//{print \\$2}"; \
+                                    awk \'/HTTP\\\\//{print \\\$2}\'; \
                                 else \
                                     echo "500"; \
                                 fi \
