@@ -236,28 +236,42 @@ spec:
                     returnStdout: true
                 ).trim()
                 
-                // 3. Test endpoints INSIDE the pod (using port 8081)
+                // 3. Test endpoints using alternative methods
                 def endpoints = ['/hello', '/time', '/greet', '/status']
                 
                 endpoints.each { endpoint ->
-                    // Method 1: Exec into the pod and curl locally
-                    def response = sh(
-                        script: "kubectl exec $POD_NAME -- curl -s -o /dev/null -w '%{http_code}' http://localhost:8081${endpoint}",
+                    // Method 1: Try wget if available
+                    def httpCode = sh(
+                        script: """
+                            kubectl exec $POD_NAME -- sh -c ' \
+                                if command -v wget >/dev/null; then \
+                                    wget -qO- --server-response http://localhost:8080${endpoint} 2>&1 | \
+                                    awk "/HTTP\\//{print \\$2}"; \
+                                else \
+                                    echo "500"; \
+                                fi \
+                            ' || echo "500"
+                        """,
                         returnStdout: true
                     ).trim()
                     
-                    if (response != "200") {
-                        error("Endpoint ${endpoint} failed with HTTP ${response}")
-                    } else {
-                        echo "Successfully verified ${endpoint} (HTTP ${response})"
+                    // Method 2: Fallback to NodePort test
+                    if (httpCode == "500" || httpCode == "") {
+                        def NODE_PORT = sh(
+                            script: "kubectl get svc spring-boot-app-service -o jsonpath='{.spec.ports[0].nodePort}'",
+                            returnStdout: true
+                        ).trim()
+                        httpCode = sh(
+                            script: "curl -s -o /dev/null -w '%{http_code}' http://\$(minikube ip):${NODE_PORT}${endpoint}",
+                            returnStdout: true
+                        ).trim()
                     }
                     
-                    // Method 2: Get full response for debugging
-                    def fullResponse = sh(
-                        script: "kubectl exec $POD_NAME -- curl -s http://localhost:8081${endpoint}",
-                        returnStdout: true
-                    )
-                    echo "Response from ${endpoint}: ${fullResponse}"
+                    if (httpCode != "200") {
+                        error("Endpoint ${endpoint} failed with HTTP ${httpCode}")
+                    } else {
+                        echo "Successfully verified ${endpoint} (HTTP ${httpCode})"
+                    }
                 }
                 
                 // 4. Verify through Ingress (external access)
