@@ -52,9 +52,12 @@ public class ApiTests {
         assertEquals("Hello, User!", response.text()); // Default name should be "User"
     }
     @Test
-    void testGreetEndpointDefaultValue() {
+    void testStatusEndpoint() {
         APIResponse response = request.get("/status");
         assertEquals(200, response.status());
-        assertEquals("Hello, Status is :", response.text()); 
+        String responseBody = response.text();
+        assertTrue(responseBody.contains("\"status\":\"UP\""));
+        assertTrue(responseBody.contains("\"service\":\"Spring Boot Demo\""));
+        assertTrue(responseBody.contains("\"version\":\"1.0.0\""));
     }
 }
