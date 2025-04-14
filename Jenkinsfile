@@ -80,41 +80,42 @@ spec:
                                     '''
                                     break
 
-                                case 'canary':
-                                    sh '''
-                                        # Delete any existing canary deployment
-                                        kubectl --kubeconfig=$KUBECONFIG_FILE delete deployment $CANARY_NAME --ignore-not-found
-                                        
-                                        # Create canary deployment YAML
-                                        kubectl --kubeconfig=$KUBECONFIG_FILE create deployment $CANARY_NAME \
-                                            --image=$DOCKER_IMAGE \
-                                            --dry-run=client -o yaml > canary-deployment.yaml
-                                        
-                                        # Use alternative sed delimiters (|) and proper newline handling
-                                        sed -i "s|replicas: 1|replicas: 1|" canary-deployment.yaml
-                                        sed -i "s|app: $CANARY_NAME|app: $CANARY_NAME|" canary-deployment.yaml
-                                        sed -i "s|matchLabels: {}|matchLabels:\\\n      app: $CANARY_NAME|" canary-deployment.yaml
-                                        sed -i "s|labels: {}|labels:\\\n    app: $CANARY_NAME|" canary-deployment.yaml
-                                        
-                                        # Apply the canary deployment
-                                        kubectl --kubeconfig=$KUBECONFIG_FILE apply -f canary-deployment.yaml
-                                        
-                                        kubectl --kubeconfig=$KUBECONFIG_FILE rollout status deployment/$CANARY_NAME --timeout=300s
+                            case 'canary':
+                                sh '''
+                                    # Clean up any previous canary deployment
+                                    kubectl --kubeconfig=$KUBECONFIG_FILE delete deployment $CANARY_NAME --ignore-not-found
+                                    
+                                    # Create canary deployment (1 replica)
+                                    kubectl --kubeconfig=$KUBECONFIG_FILE create deployment $CANARY_NAME \
+                                        --image=$DOCKER_IMAGE \
+                                        --dry-run=client -o yaml > canary-deployment.yaml
+                                    
+                                    # Modify YAML to ensure proper labels and replicas
+                                    sed -i "s|replicas: 1|replicas: 1|" canary-deployment.yaml
+                                    sed -i "s|matchLabels: {}|matchLabels:\\n      app: $CANARY_NAME|" canary-deployment.yaml
+                                    sed -i "s|labels: {}|labels:\\n    app: $CANARY_NAME|" canary-deployment.yaml
+                                    
+                                    kubectl --kubeconfig=$KUBECONFIG_FILE apply -f canary-deployment.yaml
+                                    rm -f canary-deployment.yaml
+                                    
+                                    # Wait for canary to be ready
+                                    kubectl --kubeconfig=$KUBECONFIG_FILE rollout status deployment/$CANARY_NAME --timeout=300s
 
-                                        echo "Sleeping 90s to observe Canary..."
-                                        sleep 90
+                                    echo "Sleeping 90s to observe Canary..."
+                                    sleep 90
 
-                                        # Promote canary to production
-                                        kubectl --kubeconfig=$KUBECONFIG_FILE set image deployment/$APP_NAME $APP_NAME=$DOCKER_IMAGE
-                                        kubectl --kubeconfig=$KUBECONFIG_FILE rollout status deployment/$APP_NAME --timeout=300s
+                                    # Promote canary to production
+                                    kubectl --kubeconfig=$KUBECONFIG_FILE set image deployment/$APP_NAME $APP_NAME=$DOCKER_IMAGE
+                                    kubectl --kubeconfig=$KUBECONFIG_FILE scale deployment/$APP_NAME --replicas=2  # Ensure main app is scaled up
+                                    kubectl --kubeconfig=$KUBECONFIG_FILE rollout status deployment/$APP_NAME --timeout=300s
 
-                                        # Delete canary
-                                        kubectl --kubeconfig=$KUBECONFIG_FILE delete deployment $CANARY_NAME --ignore-not-found
-                                        
-                                        # Clean up temporary file
-                                        rm -f canary-deployment.yaml
-                                    '''
-                                    break
+                                    # Clean up canary
+                                    kubectl --kubeconfig=$KUBECONFIG_FILE delete deployment $CANARY_NAME --ignore-not-found
+                                    
+                                    # Clean up any leftover green deployment (from previous blue-green)
+                                    kubectl --kubeconfig=$KUBECONFIG_FILE delete deployment $GREEN_NAME --ignore-not-found
+                                '''
+                                break
 
                                 case 'recreate':
                                     sh '''
