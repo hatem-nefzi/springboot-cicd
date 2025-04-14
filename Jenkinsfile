@@ -55,24 +55,19 @@ spec:
                                         # Delete the green deployment if it exists (clean slate)
                                         kubectl --kubeconfig=$KUBECONFIG_FILE delete deployment $GREEN_NAME --ignore-not-found
                                         
-                                        # Create new green deployment
+                                        # Create new green deployment YAML
                                         kubectl --kubeconfig=$KUBECONFIG_FILE create deployment $GREEN_NAME \
                                             --image=$DOCKER_IMAGE \
                                             --dry-run=client -o yaml > green-deployment.yaml
                                         
-                                        # Add labels and any other necessary configurations
-                                        sed -i "s/app: $GREEN_NAME/app: $GREEN_NAME/" green-deployment.yaml
-                                        sed -i "s/matchLabels: {}/matchLabels:\n      app: $GREEN_NAME/" green-deployment.yaml
-                                        sed -i "s/ labels: {}/ labels:\n    app: $GREEN_NAME/" green-deployment.yaml
+                                        # Use alternative sed delimiters (|) to avoid issues with slashes in YAML
+                                        sed -i "s|app: $GREEN_NAME|app: $GREEN_NAME|" green-deployment.yaml
+                                        sed -i "s|matchLabels: {}|matchLabels:\\n      app: $GREEN_NAME|" green-deployment.yaml
+                                        sed -i "s|labels: {}|labels:\\n    app: $GREEN_NAME|" green-deployment.yaml
                                         
                                         # Apply the green deployment
                                         kubectl --kubeconfig=$KUBECONFIG_FILE apply -f green-deployment.yaml
                                         
-                                        # Expose the green deployment with a temporary service (optional)
-                                        kubectl --kubeconfig=$KUBECONFIG_FILE expose deployment $GREEN_NAME \
-                                            --name=$GREEN_NAME-svc --port=8080 --type=ClusterIP \
-                                            --dry-run=client -o yaml | kubectl --kubeconfig=$KUBECONFIG_FILE apply -f -
-
                                         # Wait for green to be ready
                                         kubectl --kubeconfig=$KUBECONFIG_FILE rollout status deployment/$GREEN_NAME --timeout=300s
 
@@ -82,9 +77,6 @@ spec:
 
                                         # Scale down blue
                                         kubectl --kubeconfig=$KUBECONFIG_FILE scale deployment/$APP_NAME --replicas=0
-                                        
-                                        # Clean up temporary service
-                                        kubectl --kubeconfig=$KUBECONFIG_FILE delete svc $GREEN_NAME-svc --ignore-not-found
                                     '''
                                     break
 
