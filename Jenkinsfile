@@ -10,7 +10,7 @@ metadata:
 spec:
   containers:
   - name: kubectl
-    image: alpine/k8s:1.25.10
+    image: bitnami/kubectl:latest
     command: ['sleep']
     args: ['infinity']
   volumes:
@@ -31,6 +31,8 @@ spec:
     environment {
         DOCKER_IMAGE = "hatemnefzi/spring-boot-app:latest"
         APP_NAME = "spring-boot-app"
+        GREEN_NAME = "spring-boot-app-green"
+        CANARY_NAME = "spring-boot-app-canary"
         SERVICE_NAME = "spring-boot-app-service"
     }
 
@@ -40,87 +42,68 @@ spec:
                 container('kubectl') {
                     withCredentials([file(credentialsId: 'kubeconfig1', variable: 'KUBECONFIG_FILE')]) {
                         script {
-                            switch(params.DEPLOYMENT_MODE) {
-                                // 1. Rolling Update (Default)
+                            switch (params.DEPLOYMENT_MODE) {
                                 case 'rolling':
-                                    sh '''
-                                        kubectl --kubeconfig=${KUBECONFIG_FILE} \
-                                            set image deployment/${APP_NAME} ${APP_NAME}=${DOCKER_IMAGE}
-                                        
-                                        kubectl --kubeconfig=${KUBECONFIG_FILE} \
-                                            rollout status deployment/${APP_NAME} --timeout=300s
-                                    '''
+                                    sh """
+                                        kubectl --kubeconfig=${KUBECONFIG_FILE} set image deployment/${APP_NAME} ${APP_NAME}=${DOCKER_IMAGE}
+                                        kubectl --kubeconfig=${KUBECONFIG_FILE} rollout status deployment/${APP_NAME} --timeout=300s
+                                    """
                                     break
 
-                                // 2. Blue-Green Deployment
                                 case 'blue-green':
-                                    sh '''
-                                        # Create green deployment
-                                        kubectl --kubeconfig=${KUBECONFIG_FILE} \
-                                            get deployment ${APP_NAME} -o yaml \
-                                            | sed -e "s/name: ${APP_NAME}/name: ${APP_NAME}-green/" \
-                                                  -e "s/${APP_NAME}:.*/${DOCKER_IMAGE}/" \
+                                    sh """
+                                        # Clone deployment and modify name
+                                        kubectl --kubeconfig=${KUBECONFIG_FILE} get deployment ${APP_NAME} -o yaml \\
+                                            | sed "s/name: ${APP_NAME}/name: ${GREEN_NAME}/" \\
+                                            | sed "s/app: ${APP_NAME}/app: ${GREEN_NAME}/" \\
+                                            | sed "s|image: .*|image: ${DOCKER_IMAGE}|" \\
                                             | kubectl --kubeconfig=${KUBECONFIG_FILE} apply -f -
-                                        
-                                        # Wait for green deployment to be ready
-                                        kubectl --kubeconfig=${KUBECONFIG_FILE} \
-                                            rollout status deployment/${APP_NAME}-green --timeout=300s
-                                        
-                                        # Update service selector (assuming your service has deployment=blue/green labels)
-                                        kubectl --kubeconfig=${KUBECONFIG_FILE} \
-                                            patch svc ${SERVICE_NAME} \
-                                            -p '{"spec":{"selector":{"deployment":"green"}}}'
-                                        
-                                        # Scale down blue deployment
-                                        kubectl --kubeconfig=${KUBECONFIG_FILE} \
-                                            scale deployment ${APP_NAME} --replicas=0
-                                    '''
-    break
 
-                                // 3. Canary Deployment
-                                case 'canary':
-                                    sh '''
-                                        # Create canary if missing
-                                        if ! kubectl --kubeconfig=${KUBECONFIG_FILE} get deployment ${APP_NAME}-canary; then
-                                            kubectl --kubeconfig=${KUBECONFIG_FILE} \
-                                                get deployment ${APP_NAME} -o yaml \
-                                                | sed "s/name: ${APP_NAME}/name: ${APP_NAME}-canary/" \
-                                                | sed "s/replicas: 3/replicas: 1/" \
-                                                | kubectl --kubeconfig=${KUBECONFIG_FILE} apply -f -
-                                        fi
+                                        # Wait for green to be ready
+                                        kubectl --kubeconfig=${KUBECONFIG_FILE} rollout status deployment/${GREEN_NAME} --timeout=300s
 
-                                        # Update canary
-                                        kubectl --kubeconfig=${KUBECONFIG_FILE} \
-                                            set image deployment/${APP_NAME}-canary ${APP_NAME}=${DOCKER_IMAGE}
-                                        
-                                        # Verify period
-                                        sleep 120
-                                        
-                                        # Full rollout
-                                        kubectl --kubeconfig=${KUBECONFIG_FILE} \
-                                            set image deployment/${APP_NAME} ${APP_NAME}=${DOCKER_IMAGE}
-                                        
-                                        # Cleanup
-                                        kubectl --kubeconfig=${KUBECONFIG_FILE} \
-                                            scale deployment/${APP_NAME}-canary --replicas=0
-                                    '''
+                                        # Switch service selector
+                                        kubectl --kubeconfig=${KUBECONFIG_FILE} patch svc ${SERVICE_NAME} \\
+                                            -p '{"spec":{"selector":{"app":"spring-boot-app-green"}}}'
+
+                                        # Scale down blue
+                                        kubectl --kubeconfig=${KUBECONFIG_FILE} scale deployment/${APP_NAME} --replicas=0
+                                    """
                                     break
 
-                                // 4. Recreate Strategy
+                                case 'canary':
+                                    sh """
+                                        # Create canary deployment if not exists
+                                        kubectl --kubeconfig=${KUBECONFIG_FILE} get deployment ${CANARY_NAME} || \\
+                                            kubectl --kubeconfig=${KUBECONFIG_FILE} get deployment ${APP_NAME} -o yaml \\
+                                                | sed "s/name: ${APP_NAME}/name: ${CANARY_NAME}/" \\
+                                                | sed "s/app: ${APP_NAME}/app: ${CANARY_NAME}/" \\
+                                                | sed "s/replicas: .*/replicas: 1/" \\
+                                                | sed "s|image: .*|image: ${DOCKER_IMAGE}|" \\
+                                                | kubectl --kubeconfig=${KUBECONFIG_FILE} apply -f -
+
+                                        kubectl --kubeconfig=${KUBECONFIG_FILE} rollout status deployment/${CANARY_NAME} --timeout=300s
+
+                                        echo "Sleeping 90s to observe Canary..."
+                                        sleep 90
+
+                                        # Promote canary to production
+                                        kubectl --kubeconfig=${KUBECONFIG_FILE} set image deployment/${APP_NAME} ${APP_NAME}=${DOCKER_IMAGE}
+                                        kubectl --kubeconfig=${KUBECONFIG_FILE} rollout status deployment/${APP_NAME} --timeout=300s
+
+                                        # Delete or scale down canary
+                                        kubectl --kubeconfig=${KUBECONFIG_FILE} delete deployment ${CANARY_NAME} --ignore-not-found
+                                    """
+                                    break
+
                                 case 'recreate':
-                                    sh '''
-                                        kubectl --kubeconfig=${KUBECONFIG_FILE} \
-                                            scale deployment ${APP_NAME} --replicas=0
-                                        
-                                        kubectl --kubeconfig=${KUBECONFIG_FILE} \
-                                            set image deployment/${APP_NAME} ${APP_NAME}=${DOCKER_IMAGE}
-                                        
-                                        kubectl --kubeconfig=${KUBECONFIG_FILE} \
-                                            scale deployment ${APP_NAME} --replicas=3
-                                        
-                                        kubectl --kubeconfig=${KUBECONFIG_FILE} \
-                                            rollout status deployment/${APP_NAME} --timeout=300s
-                                    '''
+                                    sh """
+                                        kubectl --kubeconfig=${KUBECONFIG_FILE} scale deployment/${APP_NAME} --replicas=0
+                                        sleep 5
+                                        kubectl --kubeconfig=${KUBECONFIG_FILE} set image deployment/${APP_NAME} ${APP_NAME}=${DOCKER_IMAGE}
+                                        kubectl --kubeconfig=${KUBECONFIG_FILE} scale deployment/${APP_NAME} --replicas=2
+                                        kubectl --kubeconfig=${KUBECONFIG_FILE} rollout status deployment/${APP_NAME} --timeout=300s
+                                    """
                                     break
                             }
                         }
@@ -133,14 +116,18 @@ spec:
             steps {
                 container('kubectl') {
                     withCredentials([file(credentialsId: 'kubeconfig1', variable: 'KUBECONFIG_FILE')]) {
-                        sh '''
-                            echo "=== Deployment ==="
+                        sh """
+                            echo "=== Deployments ==="
                             kubectl --kubeconfig=${KUBECONFIG_FILE} get deployments
-                            echo "\n=== Pods ==="
-                            kubectl --kubeconfig=${KUBECONFIG_FILE} get pods -l app=${APP_NAME}
-                            echo "\n=== Service ==="
+                            
+                            echo "\\n=== Pods ==="
+                            kubectl --kubeconfig=${KUBECONFIG_FILE} get pods -l app=${APP_NAME} || true
+                            kubectl --kubeconfig=${KUBECONFIG_FILE} get pods -l app=${GREEN_NAME} || true
+                            kubectl --kubeconfig=${KUBECONFIG_FILE} get pods -l app=${CANARY_NAME} || true
+
+                            echo "\\n=== Services ==="
                             kubectl --kubeconfig=${KUBECONFIG_FILE} get svc ${SERVICE_NAME}
-                        '''
+                        """
                     }
                 }
             }
