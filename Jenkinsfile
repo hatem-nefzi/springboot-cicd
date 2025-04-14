@@ -55,32 +55,27 @@ spec:
                                 // 2. Blue-Green Deployment
                                 case 'blue-green':
                                     sh '''
-                                        # Create green deployment if missing
-                                        if ! kubectl --kubeconfig=${KUBECONFIG_FILE} get deployment ${APP_NAME}-green; then
-                                            kubectl --kubeconfig=${KUBECONFIG_FILE} \
-                                                get deployment ${APP_NAME} -o yaml \
-                                                | sed "s/name: ${APP_NAME}/name: ${APP_NAME}-green/" \
-                                                | kubectl --kubeconfig=${KUBECONFIG_FILE} apply -f -
-                                        fi
-
-                                        # Update green
+                                        # Create green deployment
                                         kubectl --kubeconfig=${KUBECONFIG_FILE} \
-                                            set image deployment/${APP_NAME}-green ${APP_NAME}=${DOCKER_IMAGE}
+                                            get deployment ${APP_NAME} -o yaml \
+                                            | sed -e "s/name: ${APP_NAME}/name: ${APP_NAME}-green/" \
+                                                  -e "s/${APP_NAME}:.*/${DOCKER_IMAGE}/" \
+                                            | kubectl --kubeconfig=${KUBECONFIG_FILE} apply -f -
                                         
-                                        # Wait for green
+                                        # Wait for green deployment to be ready
                                         kubectl --kubeconfig=${KUBECONFIG_FILE} \
                                             rollout status deployment/${APP_NAME}-green --timeout=300s
                                         
-                                        # Switch service
+                                        # Update service selector (assuming your service has deployment=blue/green labels)
                                         kubectl --kubeconfig=${KUBECONFIG_FILE} \
                                             patch svc ${SERVICE_NAME} \
                                             -p '{"spec":{"selector":{"deployment":"green"}}}'
                                         
-                                        # Scale down blue
+                                        # Scale down blue deployment
                                         kubectl --kubeconfig=${KUBECONFIG_FILE} \
                                             scale deployment ${APP_NAME} --replicas=0
                                     '''
-                                    break
+    break
 
                                 // 3. Canary Deployment
                                 case 'canary':
