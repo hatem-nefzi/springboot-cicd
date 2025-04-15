@@ -45,10 +45,16 @@ spec:
                             switch (params.DEPLOYMENT_MODE) {
                                 case 'rolling':
                                     sh '''
-                                        # Force redeploy even if same image
-                                        kubectl --kubeconfig=$KUBECONFIG_FILE patch deployment/$APP_NAME -p \
-                                          "{\"spec\":{\"template\":{\"metadata\":{\"annotations\":{\"rollout-timestamp\":\"$(date +%s)\"}}}}}"
-
+                                        # Force a visible change by adding an annotation
+                                        kubectl --kubeconfig=$KUBECONFIG_FILE annotate deployment/$APP_NAME demo-$(date +%s)=true --overwrite
+                                        
+                                        # Update the image
+                                        kubectl --kubeconfig=$KUBECONFIG_FILE set image deployment/$APP_NAME $APP_NAME=$DOCKER_IMAGE
+                                        
+                                        # Watch pods for 30 seconds max (demo-friendly)
+                                        timeout 30 kubectl --kubeconfig=$KUBECONFIG_FILE get pods -l app=$APP_NAME -w || true
+                                        
+                                        # Check final status
                                         kubectl --kubeconfig=$KUBECONFIG_FILE rollout status deployment/$APP_NAME --timeout=300s
                                     '''
                                     break
