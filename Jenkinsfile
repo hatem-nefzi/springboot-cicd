@@ -45,17 +45,16 @@ spec:
                             switch (params.DEPLOYMENT_MODE) {
                                 case 'rolling':
                                     sh '''
-                                        # Force a visible change by adding an annotation
-                                        kubectl --kubeconfig=$KUBECONFIG_FILE annotate deployment/$APP_NAME demo-$(date +%s)=true --overwrite
+                                        echo "=== Forcing rolling update ==="
                                         
-                                        # Update the image
-                                        kubectl --kubeconfig=$KUBECONFIG_FILE set image deployment/$APP_NAME $APP_NAME=$DOCKER_IMAGE
-                                        
-                                        # Watch pods for 30 seconds max (demo-friendly)
-                                        timeout 30 kubectl --kubeconfig=$KUBECONFIG_FILE get pods -l app=$APP_NAME -w || true
-                                        
-                                        # Check final status
+                                        # Restart deployment to force pod recreation
+                                        kubectl --kubeconfig=$KUBECONFIG_FILE rollout restart deployment/$APP_NAME
+
+                                        # Wait for the rollout to complete
                                         kubectl --kubeconfig=$KUBECONFIG_FILE rollout status deployment/$APP_NAME --timeout=300s
+
+                                        echo "=== Watching pods during rollout ==="
+                                        timeout 30 kubectl --kubeconfig=$KUBECONFIG_FILE get pods -l app=$APP_NAME -w || true
                                     '''
                                     break
 
