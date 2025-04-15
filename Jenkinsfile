@@ -45,20 +45,8 @@ spec:
                             switch (params.DEPLOYMENT_MODE) {
                                 case 'rolling':
                                     sh '''
-                                        # Add annotation to ensure change detection
-                                        kubectl --kubeconfig=$KUBECONFIG_FILE annotate deployment/$APP_NAME kubernetes.io/change-cause="Rolling update to ${DOCKER_IMAGE} at $(date)"
-                                        
-                                        # Update the image
                                         kubectl --kubeconfig=$KUBECONFIG_FILE set image deployment/$APP_NAME $APP_NAME=$DOCKER_IMAGE
-                                        
-                                        # Watch the rollout in background
-                                        kubectl --kubeconfig=$KUBECONFIG_FILE rollout status deployment/$APP_NAME --timeout=300s --watch &
-                                        
-                                        # Show pod changes in real-time
-                                        kubectl --kubeconfig=$KUBECONFIG_FILE get pods -l app=$APP_NAME -w &
-                                        
-                                        # Wait for rollout to complete
-                                        wait
+                                        kubectl --kubeconfig=$KUBECONFIG_FILE rollout status deployment/$APP_NAME --timeout=300s
                                     '''
                                     break
 
