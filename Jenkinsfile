@@ -7,159 +7,314 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: jenkins-agent
+  labels:
+    jenkins-agent: true
 spec:
+  serviceAccountName: jenkins-agent-sa
   containers:
+  - name: jnlp
+    image: jenkins/inbound-agent:latest
+    args: ['\$(JENKINS_SECRET)', '\$(JENKINS_NAME)']
+    workingDir: /var/lib/jenkins/workspace
+    tty: true
+    volumeMounts:
+    - name: workspace-volume
+      mountPath: /var/lib/jenkins/workspace
+    securityContext:
+      runAsUser: 1000
+      fsGroup: 1000
+    resources:
+      limits:
+        cpu: "1"
+        memory: "1Gi"
+      requests:
+        cpu: "500m"
+        memory: "512Mi"
+  - name: maven
+    image: hatemnefzi/maven-docker:latest
+    command: ['cat']
+    tty: true
+    workingDir: /var/lib/jenkins/workspace
+    volumeMounts:
+    - name: workspace-volume
+      mountPath: /var/lib/jenkins/workspace
+    - name: docker-socket
+      mountPath: /var/run/docker.sock
+    resources:
+      limits:
+        cpu: "1"
+        memory: "1Gi"
+      requests:
+        cpu: "500m"
+        memory: "512Mi"
   - name: kubectl
-    image: bitnami/kubectl:latest
+    image: alpine/k8s:1.25.10
     command: ['sleep']
     args: ['infinity']
+    workingDir: /var/lib/jenkins/workspace
+    volumeMounts:
+    - name: workspace-volume
+      mountPath: /var/lib/jenkins/workspace
+    - name: minikube-dir
+      mountPath: /host-minikube
+    - name: kubeconfig-dir
+      mountPath: /tmp/kubeconfig
+    env:
+    - name: MINIKUBE_HOME
+      value: "/host-minikube"
   volumes:
+  - name: workspace-volume
+    hostPath:
+      path: /var/lib/jenkins/workspace
+  - name: docker-socket
+    hostPath:
+      path: /var/run/docker.sock
+  - name: minikube-dir
+    hostPath:
+      path: /var/lib/jenkins/.minikube
+      type: Directory
   - name: kubeconfig-dir
     emptyDir: {}
 """
         }
     }
 
-    parameters {
-        choice(
-            name: 'DEPLOYMENT_MODE',
-            choices: ['rolling', 'blue-green', 'canary', 'recreate'],
-            description: 'Select deployment strategy'
-        )
-    }
-
     environment {
         DOCKER_IMAGE = "hatemnefzi/spring-boot-app:latest"
-        APP_NAME = "spring-boot-app"
-        GREEN_NAME = "spring-boot-app-green"
-        CANARY_NAME = "spring-boot-app-canary"
-        SERVICE_NAME = "spring-boot-app-service"
     }
 
     stages {
-        stage('Deploy') {
+        stage('Checkout') {
             steps {
-                container('kubectl') {
-                    withCredentials([file(credentialsId: 'kubeconfig1', variable: 'KUBECONFIG_FILE')]) {
-                        script {
-                            switch (params.DEPLOYMENT_MODE) {
-                                case 'rolling':
-                                    sh '''
-                                        echo "=== Forcing rolling update ==="
-                                        
-                                        # Restart deployment to force pod recreation
-                                        kubectl --kubeconfig=$KUBECONFIG_FILE rollout restart deployment/$APP_NAME
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: '*/main']],
+                    extensions: [],
+                    userRemoteConfigs: [[
+                        url: 'git@github.com:hatem-nefzi/springboot-cicd.git',
+                        credentialsId: 'SSH'
+                    ]]
+                ])
+            }
+        }
 
-                                        # Wait for the rollout to complete
-                                        kubectl --kubeconfig=$KUBECONFIG_FILE rollout status deployment/$APP_NAME --timeout=300s
-
-                                        echo "=== Watching pods during rollout ==="
-                                        timeout 30 kubectl --kubeconfig=$KUBECONFIG_FILE get pods -l app=$APP_NAME -w || true
-                                    '''
-                                    break
-
-                                case 'blue-green':
-                                    sh '''
-                                        # Delete the green deployment if it exists (clean slate)
-                                        kubectl --kubeconfig=$KUBECONFIG_FILE delete deployment $GREEN_NAME --ignore-not-found
-                                        
-                                        # Create new green deployment YAML
-                                        kubectl --kubeconfig=$KUBECONFIG_FILE create deployment $GREEN_NAME \
-                                            --image=$DOCKER_IMAGE \
-                                            --dry-run=client -o yaml > green-deployment.yaml
-                                        
-                                        # Use alternative sed delimiters (|) to avoid issues with slashes in YAML
-                                        sed -i "s|app: $GREEN_NAME|app: $GREEN_NAME|" green-deployment.yaml
-                                        sed -i "s|matchLabels: {}|matchLabels:\\n      app: $GREEN_NAME|" green-deployment.yaml
-                                        sed -i "s|labels: {}|labels:\\n    app: $GREEN_NAME|" green-deployment.yaml
-                                        
-                                        # Apply the green deployment
-                                        kubectl --kubeconfig=$KUBECONFIG_FILE apply -f green-deployment.yaml
-                                        
-                                        # Wait for green to be ready
-                                        kubectl --kubeconfig=$KUBECONFIG_FILE rollout status deployment/$GREEN_NAME --timeout=300s
-
-                                        # Switch service selector
-                                        kubectl --kubeconfig=$KUBECONFIG_FILE patch svc $SERVICE_NAME \
-                                            -p '{"spec":{"selector":{"app":"'$GREEN_NAME'"}}}'
-
-                                        # Scale down blue
-                                        kubectl --kubeconfig=$KUBECONFIG_FILE scale deployment/$APP_NAME --replicas=0
-                                    '''
-                                    break
-
-                            case 'canary':
-                                sh '''
-                                    # Clean up any previous canary deployment
-                                    kubectl --kubeconfig=$KUBECONFIG_FILE delete deployment $CANARY_NAME --ignore-not-found
-                                    
-                                    # Create canary deployment (1 replica)
-                                    kubectl --kubeconfig=$KUBECONFIG_FILE create deployment $CANARY_NAME \
-                                        --image=$DOCKER_IMAGE \
-                                        --dry-run=client -o yaml > canary-deployment.yaml
-                                    
-                                    # Modify YAML to ensure proper labels and replicas
-                                    sed -i "s|replicas: 1|replicas: 1|" canary-deployment.yaml
-                                    sed -i "s|matchLabels: {}|matchLabels:\\n      app: $CANARY_NAME|" canary-deployment.yaml
-                                    sed -i "s|labels: {}|labels:\\n    app: $CANARY_NAME|" canary-deployment.yaml
-                                    
-                                    kubectl --kubeconfig=$KUBECONFIG_FILE apply -f canary-deployment.yaml
-                                    rm -f canary-deployment.yaml
-                                    
-                                    # Wait for canary to be ready
-                                    kubectl --kubeconfig=$KUBECONFIG_FILE rollout status deployment/$CANARY_NAME --timeout=300s
-
-                                    echo "Sleeping 90s to observe Canary..."
-                                    sleep 90
-
-                                    # Promote canary to production
-                                    kubectl --kubeconfig=$KUBECONFIG_FILE set image deployment/$APP_NAME $APP_NAME=$DOCKER_IMAGE
-                                    kubectl --kubeconfig=$KUBECONFIG_FILE scale deployment/$APP_NAME --replicas=2  # Ensure main app is scaled up
-                                    kubectl --kubeconfig=$KUBECONFIG_FILE rollout status deployment/$APP_NAME --timeout=300s
-
-                                    # Clean up canary
-                                    kubectl --kubeconfig=$KUBECONFIG_FILE delete deployment $CANARY_NAME --ignore-not-found
-                                    
-                                    # Clean up any leftover green deployment (from previous blue-green)
-                                    kubectl --kubeconfig=$KUBECONFIG_FILE delete deployment $GREEN_NAME --ignore-not-found
-                                '''
-                                break
-
-                                case 'recreate':
-                                    sh '''
-                                        kubectl --kubeconfig=$KUBECONFIG_FILE scale deployment/$APP_NAME --replicas=0
-                                        sleep 5
-                                        kubectl --kubeconfig=$KUBECONFIG_FILE set image deployment/$APP_NAME $APP_NAME=$DOCKER_IMAGE
-                                        kubectl --kubeconfig=$KUBECONFIG_FILE scale deployment/$APP_NAME --replicas=2
-                                        kubectl --kubeconfig=$KUBECONFIG_FILE rollout status deployment/$APP_NAME --timeout=300s
-                                    '''
-                                    break
-                            }
-                        }
-                    }
+        stage('Build') {
+            steps {
+                container('maven') {
+                    sh 'mvn clean package -DskipTests'
                 }
             }
         }
 
-        stage('Verify Deployment') {
+        stage('Unit Tests') {
             steps {
-                container('kubectl') {
-                    withCredentials([file(credentialsId: 'kubeconfig1', variable: 'KUBECONFIG_FILE')]) {
-                        sh '''
-                            echo "=== Deployments ==="
-                            kubectl --kubeconfig=$KUBECONFIG_FILE get deployments
-                            
-                            echo "\n=== Pods ==="
-                            kubectl --kubeconfig=$KUBECONFIG_FILE get pods -l app=$APP_NAME || true
-                            kubectl --kubeconfig=$KUBECONFIG_FILE get pods -l app=$GREEN_NAME || true
-                            kubectl --kubeconfig=$KUBECONFIG_FILE get pods -l app=$CANARY_NAME || true
+                container('maven') {
+                    sh 'mvn test'  // Runs only UnitTests.java
+            }
+            }
+        }
 
-                            echo "\n=== Services ==="
-                            kubectl --kubeconfig=$KUBECONFIG_FILE get svc $SERVICE_NAME
+        stage('Integration Tests') {
+            steps {
+                container('maven') {
+                    sh 'mvn verify -DskipTests'  // Runs only ApiTests.java
+            }
+            }
+            
+        }
+
+        stage('Run Gatling Tests') {
+            steps {
+                container('maven') {
+                    sh 'mvn gatling:test'
+                }
+            }
+            post {
+                always {
+                    archiveArtifacts artifacts: 'target/gatling/**/*', allowEmptyArchive: true
+                    gatlingArchive()
+                }
+            }
+        }
+
+        stage('Clean Playwright Cache') {
+            steps {
+                container('maven') {
+                    sh 'rm -rf /home/jenkins/agent/playwright-browsers'
+                    sh 'mvn exec:java -Dexec.mainClass="com.microsoft.playwright.CLI" -Dexec.args="install --force"'
+                }
+            }
+        }
+
+        stage('Functional Tests') {
+            steps {
+                container('maven') {
+                    sh 'mvn test'
+                }
+            }
+            post {
+                always {
+                    script {
+                        def testReports = findFiles(glob: 'target/surefire-reports/*.xml')
+                        if (testReports) {
+                            junit 'target/surefire-reports/*.xml'
+                        } else {
+                            echo 'No test report files found. Skipping JUnit step.'
+                        }
+                    }
+                    archiveArtifacts artifacts: 'target/surefire-reports/**/*', allowEmptyArchive: true
+                }
+            }
+        }
+
+        stage('Docker Build') {
+            steps {
+                container('maven') {
+                    sh '''
+                        docker buildx create --use
+                        docker buildx build --pull --no-cache -t $DOCKER_IMAGE --load .
+                        docker buildx prune -af
+                    '''
+                }
+            }
+        }
+
+        stage('Debug') {
+            steps {
+                container('maven') {
+                    sh '''
+                        echo "PATH: $PATH"
+                        which docker
+                        docker --version
+                    '''
+                }
+            }
+        }
+
+        stage('Docker Push') {
+            steps {
+                container('maven') {
+                    withDockerRegistry([credentialsId: 'docker-hub-credentials', url: 'https://index.docker.io/v1/']) {
+                        sh '''
+                            echo "PATH: $PATH"
+                            echo "Docker version:"
+                            docker --version
+                            echo "Docker images:"
+                            docker images
+                            echo "Pushing Docker image: $DOCKER_IMAGE"
+                            docker push $DOCKER_IMAGE
                         '''
                     }
                 }
             }
         }
+
+        stage('Deploy') {
+    steps {
+        container('kubectl') {
+            withCredentials([file(credentialsId: 'kubeconfig1', variable: 'KUBECONFIG_FILE')]) {
+                sh '''
+                    # Ensure KUBECONFIG file exists
+                    if [ ! -f "$KUBECONFIG_FILE" ]; then
+                        echo "ERROR: Kubeconfig file not found at $KUBECONFIG_FILE"
+                        exit 1
+                    fi
+
+                    echo "Using KUBECONFIG at: $KUBECONFIG_FILE"
+
+                    # Update deployment image
+                    kubectl --kubeconfig=$KUBECONFIG_FILE \
+                        set image deployment/spring-boot-app \
+                        spring-boot-app=$DOCKER_IMAGE
+                    
+                    # Wait for rollout to complete
+                    kubectl --kubeconfig=$KUBECONFIG_FILE \
+                        rollout status deployment/spring-boot-app --timeout=300s
+                    
+                    # Verify pods are ready
+                    kubectl --kubeconfig=$KUBECONFIG_FILE \
+                        wait --for=condition=ready pod \
+                        -l app=spring-boot-app --timeout=120s
+                '''
+            }
+        }
     }
 }
+        stage('Verify Endpoints') {
+    steps {
+        container('kubectl') {
+            script {
+                // Method 1: Use ClusterIP directly (most reliable)
+                def CLUSTER_IP = sh(script: """
+                    kubectl get svc spring-boot-app-service \
+                    -o jsonpath='{.spec.clusterIP}'
+                """, returnStdout: true).trim()
+                
+                def endpoints = ['/hello', '/status']
+                endpoints.each { endpoint ->
+                    def httpCode = sh(script: """
+                        curl -s -o /dev/null -w '%{http_code}' \
+                        --max-time 5 \
+                        http://${CLUSTER_IP}${endpoint}
+                    """, returnStdout: true).trim()
+                    
+                    if (httpCode != "200") {
+                        error("${endpoint} failed with HTTP ${httpCode}")
+                    } else {
+                        echo "Verified ${endpoint} (HTTP 200)"
+                    }
+                }
+                
+                // Method 2: Alternative using Service DNS (if needed)
+                def SERVICE_DNS = "spring-boot-app-service.default.svc.cluster.local"
+                sh """
+                    echo "Testing via Service DNS..."
+                    curl -v http://${SERVICE_DNS}/hello
+                """
+            }
+        }
+    }
+}
+
+    }
+    post {
+    always {
+        container('maven') {
+            dir("${WORKSPACE}") {
+                sh '''
+                    echo "=== Starting Advanced Cleanup ==="
+                    echo "Initial disk usage:"
+                    df -h .
+
+                    # Maven Cleanup: Removes old dependencies, keeping only useful caches
+                    echo "Cleaning Maven build artifacts..."
+                    mvn clean
+                    rm -rf ~/.m2/repository/org/apache/maven/plugins
+                    rm -rf ~/.m2/repository/org/apache/maven/shared
+                    rm -rf ~/.m2/repository/com/sun
+                    rm -rf ~/.m2/repository/org/codehaus
+                    find ~/.m2/repository -type f -name "*lastUpdated" -delete
+
+                    # Node Cleanup (Playwright & other cached data)
+                    echo "Cleaning Node.js cache..."
+                    rm -rf ~/.npm/_cacache/*
+                    rm -rf ~/.cache/ms-playwright
+
+                    # Docker Cleanup: Remove old images/containers while keeping actively used ones
+                    echo "Cleaning Docker..."
+                    docker system prune -af --volumes || true
+                    docker images --format '{{.Repository}}:{{.Tag}}' | grep '<none>' | xargs -r docker rmi || true
+                    docker container prune -f || true
+
+                    # Check final disk usage
+                    echo "Final disk usage after cleanup:"
+                    df -h .
+                    
+                    echo "=== Cleanup Completed Successfully ==="
+                '''
+            }
+        }
+    }
+}
+
+} 
