@@ -45,7 +45,10 @@ spec:
                             switch (params.DEPLOYMENT_MODE) {
                                 case 'rolling':
                                     sh '''
-                                        kubectl --kubeconfig=$KUBECONFIG_FILE set image deployment/$APP_NAME $APP_NAME=$DOCKER_IMAGE
+                                        # Force redeploy even if same image
+                                        kubectl --kubeconfig=$KUBECONFIG_FILE patch deployment/$APP_NAME -p \
+                                          "{\"spec\":{\"template\":{\"metadata\":{\"annotations\":{\"rollout-timestamp\":\"$(date +%s)\"}}}}}"
+
                                         kubectl --kubeconfig=$KUBECONFIG_FILE rollout status deployment/$APP_NAME --timeout=300s
                                     '''
                                     break
