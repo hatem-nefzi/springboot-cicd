@@ -1,0 +1,8 @@
+test_runner:
+  tags:
+    - docker       # Must match your runner's tags (e.g., "docker,linux")
+  script:
+    - echo "Hello, GitLab Runner!"
+    - uname -a    # Check OS (should match your Docker image)
+    - df -h       # Show disk space (verifies job execution)
+    - docker --version  # Check Docker version
